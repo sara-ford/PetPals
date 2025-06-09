@@ -41,44 +41,47 @@ const SignIn: FC<SignInProps> = () => {
   });
 
   return (
-    <div className="SignIn">
-      <form onSubmit={formik.handleSubmit}>
-        <h2>רישום משתמש</h2>
+    <div className="SignIn" style={{ direction: 'rtl' }}>
+      <form onSubmit={formik.handleSubmit} style={{ width: '100%' }}>
+        <h3 className="text-center mb-4">רישום משתמש</h3>
 
-        <div>
-          <label>שם:</label>
+        <div className="mb-3">
+          <label className="form-label">שם:</label>
           <input
             name="name"
             type="text"
+            className="form-control"
             onChange={formik.handleChange}
             value={formik.values.name}
           />
-          {formik.errors.name && <div className="error">{formik.errors.name}</div>}
+          {formik.errors.name && <div className="text-danger small">{formik.errors.name}</div>}
         </div>
 
-        <div>
-          <label>אימייל:</label>
+        <div className="mb-3">
+          <label className="form-label">אימייל:</label>
           <input
             name="email"
             type="email"
+            className="form-control"
             onChange={formik.handleChange}
             value={formik.values.email}
           />
-          {formik.errors.email && <div className="error">{formik.errors.email}</div>}
+          {formik.errors.email && <div className="text-danger small">{formik.errors.email}</div>}
         </div>
 
-        <div>
-          <label>סיסמה:</label>
+        <div className="mb-3">
+          <label className="form-label">סיסמה:</label>
           <input
             name="password"
             type="password"
+            className="form-control"
             onChange={formik.handleChange}
             value={formik.values.password}
           />
-          {formik.errors.password && <div className="error">{formik.errors.password}</div>}
+          {formik.errors.password && <div className="text-danger small">{formik.errors.password}</div>}
         </div>
 
-        <button type="submit">התחבר / הירשם</button>
+        <button type="submit" className="btn btn-success w-100">הירשם</button>
       </form>
       {message && <p className="message">{message}</p>}
     </div>

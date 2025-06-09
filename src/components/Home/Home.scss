@@ -1,1 +1,29 @@
-.Home {}
+.Home {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  direction: rtl;
+
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+
+  .content {
+    font-size: 18px;
+  }
+}
