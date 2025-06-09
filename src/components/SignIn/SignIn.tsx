@@ -29,6 +29,7 @@ const SignIn: FC<SignInProps> = () => {
             user.email === values.email && user.password === values.password
         );
 
+        
         if (userExists) {
           setMessage(`ברוכה הבאה, ${userExists.name}!`);
         } else {
