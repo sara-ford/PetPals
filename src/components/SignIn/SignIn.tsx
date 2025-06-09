@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './SignIn.scss';
@@ -6,6 +6,8 @@ import './SignIn.scss';
 interface SignInProps {}
 
 const SignIn: FC<SignInProps> = () => {
+  const [message, setMessage] = useState('');
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -17,8 +19,24 @@ const SignIn: FC<SignInProps> = () => {
       email: Yup.string().email('אימייל לא תקין').required('שדה חובה'),
       password: Yup.string().min(6, 'לפחות 6 תווים').required('שדה חובה'),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        const res = await fetch("http://localhost:3001/users");
+        const users = await res.json();
+
+        const userExists = users.find(
+          (user: any) =>
+            user.email === values.email && user.password === values.password
+        );
+
+        if (userExists) {
+          setMessage(`ברוכה הבאה, ${userExists.name}!`);
+        } else {
+          setMessage('אינך קיים נא להירשם.');
+        }
+      } catch (error) {
+        setMessage('אירעה שגיאה בשרת, נסה שוב מאוחר יותר.');
+      }
     },
   });
 
@@ -60,8 +78,9 @@ const SignIn: FC<SignInProps> = () => {
           {formik.errors.password && <div className="error">{formik.errors.password}</div>}
         </div>
 
-        <button type="submit">הירשם</button>
+        <button type="submit">התחבר / הירשם</button>
       </form>
+      {message && <p className="message">{message}</p>}
     </div>
   );
 };
