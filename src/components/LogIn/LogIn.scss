@@ -1,1 +1,26 @@
-.LogIn {}
+.Login {
+  max-width: 400px;
+  margin: auto;
+  padding: 1rem;
+  background-color: #e8f0fe;
+  border-radius: 8px;
+  direction: rtl;
+}
+
+.Login label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.Login input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  box-sizing: border-box;
+}
+
+.Login .error {
+  color: red;
+  font-size: 0.9rem;
+}
