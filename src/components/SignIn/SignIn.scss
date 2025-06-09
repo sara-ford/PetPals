@@ -1,0 +1,26 @@
+.SignIn {
+  max-width: 400px;
+  margin: auto;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  direction: rtl;
+}
+
+.SignIn label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.SignIn input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  box-sizing: border-box;
+}
+
+.SignIn .error {
+  color: red;
+  font-size: 0.9rem;
+}
