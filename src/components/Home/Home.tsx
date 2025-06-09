@@ -1,12 +1,16 @@
-import React, { FC } from 'react';
-import './Home.scss';
+import React from 'react';
+import NavBar from '../NavBar/NavBar'; // ודא שהנתיב נכון
 
-interface HomeProps {}
-
-const Home: FC<HomeProps> = () => (
-  <div className="Home">
-    Home Component
-  </div>
-);
+const Home = () => {
+  return (
+    <div>
+      <NavBar /> {/* כאן ה־NavBar */}
+      <div className="home-content">
+        <h1>ברוך הבא לדף הבית!</h1>
+        <p>כאן תוכל לנהל את הכל.</p>
+      </div>
+    </div>
+  );
+};
 
 export default Home;

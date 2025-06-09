@@ -1,14 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AuthContainer from './components/AuthContainer/AuthContainer';
-
-import SignIn from './components/SignIn/SignIn';
+import Home from './components/Home/Home';
 
 
 const App: React.FC = () => {
- return (
+  return (
     <div>
-      < AuthContainer/>
+      <Home/>
     </div>
   );
 };
