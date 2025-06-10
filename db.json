@@ -1,62 +1,40 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "name": "שרה כהן",
       "email": "sara@example.com",
       "password": "123456"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "דני לוי",
       "email": "dani@example.com",
       "password": "abcdef"
-    },
-    {
-      "id": "3",
-      "name": "ללי",
-      "email": "M0533171367@GMAIL.COM",
-      "password": "123456"
-    },
-    {
-      "id": "4",
-      "name": "יוסי כהן",
-      "email": "gtgtg@rfrfr",
-      "password": "123456"
-    },
-    {
-      "id": 5,
-      "name": "דני לוי",
-      "email": "rdrdrdrd@ff",
-      "password": "123456"
-    },
-    {
-      "id": 6,
-      "name": "דני לוי",
-      "email": "hadasda8@gmail.com",
-      "password": "123456"
     }
   ],
   "pets": [
     {
-      "id": "1",
+      "id": 1,
       "name": "מיקי",
       "type": "כלב",
       "gender": "זכר",
       "age": 3,
-      "status": "למסירה"
+      "status": "למסירה",
+      "image": "https://cdn.royalcanin-weshare-online.io/pFetIooBBKJuub5qQgYp/v5/puppy-lying-in-arms"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "טופי",
       "type": "חתול",
       "gender": "נקבה",
       "age": 2,
       "status": "למכירה",
-      "price": 900
+      "price": 900,
+      "image": "http://yadukrishnan.epizy.com/wp-content/uploads/2021/12/Thinking-of-getting-a-cat.png"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "באז",
       "type": "ארנב",
       "gender": "זכר",
