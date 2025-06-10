@@ -3,12 +3,13 @@ import { Routes, Route } from 'react-router-dom';
 import AuthContainer from './components/AuthContainer/AuthContainer';
 import Home from './components/Home/Home';
 
-
 const App: React.FC = () => {
   return (
     <div>
-      <AuthContainer />
-      <Home />
+      <Routes>
+        <Route path="/" element={<AuthContainer />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
     </div>
   );
 };
