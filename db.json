@@ -1,40 +1,16 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "name": "שרה כהן",
       "email": "sara@example.com",
       "password": "123456"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "דני לוי",
       "email": "dani@example.com",
       "password": "abcdef"
-    },
-    {
-      "id": "3",
-      "name": "ללי",
-      "email": "M0533171367@GMAIL.COM",
-      "password": "123456"
-    },
-    {
-      "id": "4",
-      "name": "יוסי כהן",
-      "email": "gtgtg@rfrfr",
-      "password": "123456"
-    },
-    {
-      "id": 5,
-      "name": "דני לוי",
-      "email": "rdrdrdrd@ff",
-      "password": "123456"
-    },
-    {
-      "id": 6,
-      "name": "דני לוי",
-      "email": "hadasda8@gmail.com",
-      "password": "123456"
     }
   ],
   "pets": [
