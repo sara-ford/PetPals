@@ -3,9 +3,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './SignUp.scss';
 
-interface SignUpProps {}
+interface SignUpProps {
+  setIsRegistering: (value: boolean) => void;
+}
 
-const SignUp: FC<SignUpProps> = () => {
+const SignUp: FC<SignUpProps> = ({ setIsRegistering }) => {
   const [message, setMessage] = useState('');
 
   const formik = useFormik({
@@ -21,27 +23,52 @@ const SignUp: FC<SignUpProps> = () => {
     }),
     onSubmit: async (values) => {
       try {
+        // בדיקה אם משתמש עם האימייל כבר קיים
+        const checkUserRes = await fetch(`http://localhost:3001/users?email=${values.email}`);
+        const existingUsers = await checkUserRes.json();
+
+        if (existingUsers.length > 0) {
+          setMessage('אתה כבר קיים במערכת!');
+          return;
+        }
+
+        // קבלת כל המשתמשים כדי לחשב את ה-id הבא
+        const allUsersRes = await fetch('http://localhost:3001/users');
+        const allUsers = await allUsersRes.json();
+        const maxId = allUsers.length > 0 ? Math.max(...allUsers.map((user: any) => user.id)) : 0;
+        const newId = maxId + 1;
+
+        // הוספת המשתמש עם id חדש
         const res = await fetch('http://localhost:3001/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(values),
+          body: JSON.stringify({
+            id: newId,
+            ...values,
+          }),
         });
+
         if (res.ok) {
           const newUser = await res.json();
           setMessage(`נרשמת בהצלחה, ${newUser.name || values.name}!`);
+          setTimeout(() => {
+            console.log('Switching to SignIn');
+            setIsRegistering(false); // מעבר לטופס ההתחברות
+          }, 2000);
         } else {
           setMessage('שגיאה ברישום, נסה שוב.');
         }
       } catch (error) {
         setMessage('אירעה שגיאה בשרת, נסה שוב מאוחר יותר.');
+        console.error('Error during signup:', error);
       }
     },
   });
 
   return (
-    <div className="SignIn" style={{ direction: 'rtl' }}>
+    <div className="SignUp" style={{ direction: 'rtl' }}>
       <form onSubmit={formik.handleSubmit} style={{ width: '100%' }}>
         <h3 className="text-center mb-4">רישום משתמש</h3>
 

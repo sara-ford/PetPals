@@ -1,71 +1,239 @@
 {
-    "users": [
+  "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "שרה כהן",
       "email": "sara@example.com",
       "password": "123456"
-      
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "דני לוי",
       "email": "dani@example.com",
       "password": "abcdef"
-    
+    },
+    {
+      "id": "3",
+      "name": "ללי",
+      "email": "M0533171367@GMAIL.COM",
+      "password": "123456"
+    },
+    {
+      "id": "4",
+      "name": "יוסי כהן",
+      "email": "gtgtg@rfrfr",
+      "password": "123456"
+    },
+    {
+      "id": 5,
+      "name": "דני לוי",
+      "email": "rdrdrdrd@ff",
+      "password": "123456"
+    },
+    {
+      "id": 6,
+      "name": "דני לוי",
+      "email": "hadasda8@gmail.com",
+      "password": "123456"
     }
-    
   ],
   "pets": [
-  { "id": 1, "name": "מיקי", "type": "כלב", "gender": "זכר", "age": 3, "status": "למסירה" },
-  { "id": 2, "name": "טופי", "type": "חתול", "gender": "נקבה", "age": 2, "status": "למכירה", "price": 900 },
-  { "id": 3, "name": "באז", "type": "ארנב", "gender": "זכר", "age": 1, "status": "למסירה" },
-  { "id": 4, "name": "לולה", "type": "תוכי", "gender": "נקבה", "age": 4, "status": "למסירה" },
-  { "id": 5, "name": "רקס", "type": "כלב", "gender": "זכר", "age": 5, "status": "למכירה", "price": 1200 },
-  { "id": 6, "name": "מימי", "type": "חתול", "gender": "נקבה", "age": 3, "status": "למסירה" },
-  { "id": 7, "name": "צ'רלי", "type": "כלב", "gender": "זכר", "age": 2, "status": "למסירה" },
-  { "id": 8, "name": "פופי", "type": "אוגר", "gender": "נקבה", "age": 1, "status": "למכירה", "price": 50 },
-  { "id": 9, "name": "ג'ינג'ר", "type": "חתול", "gender": "זכר", "age": 4, "status": "למסירה" },
-  { "id": 10, "name": "רובין", "type": "ציפור", "gender": "נקבה", "age": 3, "status": "למכירה", "price": 200 },
-  { "id": 11, "name": "סמי", "type": "כלב", "gender": "זכר", "age": 6, "status": "למסירה" },
-  { "id": 12, "name": "קיטי", "type": "חתול", "gender": "נקבה", "age": 2, "status": "למכירה", "price": 850 },
-  { "id": 13, "name": "רוקי", "type": "כלב", "gender": "זכר", "age": 3, "status": "למסירה" },
-  { "id": 14, "name": "בטי", "type": "תוכי", "gender": "נקבה", "age": 5, "status": "למסירה" },
-  { "id": 15, "name": "טיגריס", "type": "חתול", "gender": "זכר", "age": 1, "status": "למכירה", "price": 700 },
-  { "id": 16, "name": "פיצ'ו", "type": "ארנב", "gender": "זכר", "age": 2, "status": "למסירה" },
-  { "id": 17, "name": "נינה", "type": "חתול", "gender": "נקבה", "age": 3, "status": "למסירה" },
-  { "id": 18, "name": "טוטו", "type": "כלב", "gender": "זכר", "age": 4, "status": "למכירה", "price": 900 },
-  { "id": 19, "name": "לולה", "type": "חתול", "gender": "נקבה", "age": 2, "status": "למסירה" },
-  { "id": 20, "name": "ג'וני", "type": "כלב", "gender": "זכר", "age": 5, "status": "למסירה" }
-]
-,"reviews": [
-  {
-    "id": 1,
-    "petId": 2,
-    "userId": 1,
-    "rating": 5,
-    "comment": "חתול מקסים, ממש אוהבת אותו!"
-  },
-  {
-    "id": 2,
-    "petId": 5,
-    "userId": 3,
-    "rating": 4,
-    "comment": "כלב טוב ומסור, קצת שובב לפעמים."
-  },
-  {
-    "id": 3,
-    "petId": 10,
-    "userId": 2,
-    "rating": 3,
-    "comment": "הציפור שרה יפה, אבל קצת רועשת."
-  },
-  {
-    "id": 4,
-    "petId": 15,
-    "userId": 4,
-    "rating": 5,
-    "comment": "חתול מאוד עדין ונעים."
-  }
-]
+    {
+      "id": "1",
+      "name": "מיקי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 3,
+      "status": "למסירה"
+    },
+    {
+      "id": "2",
+      "name": "טופי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למכירה",
+      "price": 900
+    },
+    {
+      "id": "3",
+      "name": "באז",
+      "type": "ארנב",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למסירה"
+    },
+    {
+      "id": "4",
+      "name": "לולה",
+      "type": "תוכי",
+      "gender": "נקבה",
+      "age": 4,
+      "status": "למסירה"
+    },
+    {
+      "id": "5",
+      "name": "רקס",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 5,
+      "status": "למכירה",
+      "price": 1200
+    },
+    {
+      "id": "6",
+      "name": "מימי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 3,
+      "status": "למסירה"
+    },
+    {
+      "id": "7",
+      "name": "צ'רלי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 2,
+      "status": "למסירה"
+    },
+    {
+      "id": "8",
+      "name": "פופי",
+      "type": "אוגר",
+      "gender": "נקבה",
+      "age": 1,
+      "status": "למכירה",
+      "price": 50
+    },
+    {
+      "id": "9",
+      "name": "ג'ינג'ר",
+      "type": "חתול",
+      "gender": "זכר",
+      "age": 4,
+      "status": "למסירה"
+    },
+    {
+      "id": "10",
+      "name": "רובין",
+      "type": "ציפור",
+      "gender": "נקבה",
+      "age": 3,
+      "status": "למכירה",
+      "price": 200
+    },
+    {
+      "id": "11",
+      "name": "סמי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 6,
+      "status": "למסירה"
+    },
+    {
+      "id": "12",
+      "name": "קיטי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למכירה",
+      "price": 850
+    },
+    {
+      "id": "13",
+      "name": "רוקי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 3,
+      "status": "למסירה"
+    },
+    {
+      "id": "14",
+      "name": "בטי",
+      "type": "תוכי",
+      "gender": "נקבה",
+      "age": 5,
+      "status": "למסירה"
+    },
+    {
+      "id": "15",
+      "name": "טיגריס",
+      "type": "חתול",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למכירה",
+      "price": 700
+    },
+    {
+      "id": "16",
+      "name": "פיצ'ו",
+      "type": "ארנב",
+      "gender": "זכר",
+      "age": 2,
+      "status": "למסירה"
+    },
+    {
+      "id": "17",
+      "name": "נינה",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 3,
+      "status": "למסירה"
+    },
+    {
+      "id": "18",
+      "name": "טוטו",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 4,
+      "status": "למכירה",
+      "price": 900
+    },
+    {
+      "id": "19",
+      "name": "לולה",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למסירה"
+    },
+    {
+      "id": "20",
+      "name": "ג'וני",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 5,
+      "status": "למסירה"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "petId": 2,
+      "userId": 1,
+      "rating": 5,
+      "comment": "חתול מקסים, ממש אוהבת אותו!"
+    },
+    {
+      "id": "2",
+      "petId": 5,
+      "userId": 3,
+      "rating": 4,
+      "comment": "כלב טוב ומסור, קצת שובב לפעמים."
+    },
+    {
+      "id": "3",
+      "petId": 10,
+      "userId": 2,
+      "rating": 3,
+      "comment": "הציפור שרה יפה, אבל קצת רועשת."
+    },
+    {
+      "id": "4",
+      "petId": 15,
+      "userId": 4,
+      "rating": 5,
+      "comment": "חתול מאוד עדין ונעים."
+    }
+  ]
 }
