@@ -39,24 +39,26 @@
   ],
   "pets": [
     {
-      "id": "1",
+      "id": 1,
       "name": "מיקי",
       "type": "כלב",
       "gender": "זכר",
       "age": 3,
-      "status": "למסירה"
+      "status": "למסירה",
+      "image": "https://cdn.royalcanin-weshare-online.io/pFetIooBBKJuub5qQgYp/v5/puppy-lying-in-arms"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "טופי",
       "type": "חתול",
       "gender": "נקבה",
       "age": 2,
       "status": "למכירה",
-      "price": 900
+      "price": 900,
+      "image": "http://yadukrishnan.epizy.com/wp-content/uploads/2021/12/Thinking-of-getting-a-cat.png"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "באז",
       "type": "ארנב",
       "gender": "זכר",
