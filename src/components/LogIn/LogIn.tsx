@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './LogIn.scss';
 
 const LogIn: FC = () => {
+  const [message, setMessage] = useState('');
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -13,8 +15,25 @@ const LogIn: FC = () => {
       email: Yup.string().email('אימייל לא תקין').required('שדה חובה'),
       password: Yup.string().min(6, 'לפחות 6 תווים').required('שדה חובה'),
     }),
-    onSubmit: (values) => {
-      alert(`מתחבר עם:\n${JSON.stringify(values, null, 2)}`);
+    onSubmit: async (values) => {
+      try {
+        const res = await fetch("http://localhost:3001/users");
+        const users = await res.json();
+
+        const userExists = users.find(
+          (user: any) =>
+            user.email === values.email && user.password === values.password
+        );
+
+        if (userExists) {
+          setMessage(`ברוכה הבאה, ${userExists.name}!`);
+          // כאן אפשר להוסיף לוגיקה נוספת, כמו הפניה לדף אחר
+        } else {
+          setMessage('אימייל או סיסמה שגויים, נסה שוב.');
+        }
+      } catch (error) {
+        setMessage('אירעה שגיאה בשרת, נסה שוב מאוחר יותר.');
+      }
     },
   });
 
@@ -30,9 +49,12 @@ const LogIn: FC = () => {
             type="email"
             className="form-control"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // הוספתי כדי שהתיקוף יעבוד עם onBlur
             value={formik.values.email}
           />
-          {formik.errors.email && <div className="text-danger small">{formik.errors.email}</div>}
+          {formik.touched.email && formik.errors.email && (
+            <div className="text-danger small">{formik.errors.email}</div>
+          )}
         </div>
 
         <div className="mb-3">
@@ -42,13 +64,17 @@ const LogIn: FC = () => {
             type="password"
             className="form-control"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // הוספתי כדי שהתיקוף יעבוד עם onBlur
             value={formik.values.password}
           />
-          {formik.errors.password && <div className="text-danger small">{formik.errors.password}</div>}
+          {formik.touched.password && formik.errors.password && (
+            <div className="text-danger small">{formik.errors.password}</div>
+          )}
         </div>
 
         <button type="submit" className="btn btn-primary w-100">התחבר</button>
       </form>
+      {message && <p className="message" style={{ textAlign: 'center' }}>{message}</p>}
     </div>
   );
 };
