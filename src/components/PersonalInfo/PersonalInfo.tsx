@@ -5,7 +5,6 @@ interface PersonalInfoProps {}
 
 const PersonalInfo: FC<PersonalInfoProps> = () => (
   <div className="PersonalInfo">
-    PersonalInfo Componentדגכעיחליכגדשדגכעיחלך
   </div>
 );
 
