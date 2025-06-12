@@ -55,6 +55,33 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
 
   const closePetDetails = () => setSelectedPet(null);
 
+  const handleDeleteReview = async (reviewId: string) => {
+    await fetch(`http://localhost:3001/reviews/${reviewId}`, {
+      method: 'DELETE',
+    });
+
+    const updatedReviews = selectedPet.reviews.filter((r: any) => r.id !== reviewId);
+    setSelectedPet({ ...selectedPet, reviews: updatedReviews });
+  };
+
+  const handleEditReview = (review: any) => {
+    const newComment = prompt('עדכן את הביקורת שלך:', review.comment);
+    if (!newComment) return;
+
+    fetch(`http://localhost:3001/reviews/${review.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...review, comment: newComment }),
+    })
+      .then(res => res.json())
+      .then((updatedReview) => {
+        const updatedReviews = selectedPet.reviews.map((r: any) =>
+          r.id === updatedReview.id ? updatedReview : r
+        );
+        setSelectedPet({ ...selectedPet, reviews: updatedReviews });
+      });
+  };
+
   return (
     <div className="home-container">
       <div className="content">
@@ -122,12 +149,19 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
               >
                 {cartItems.find(item => item.id === selectedPet.id) ? '❤️' : '🤍'}
               </button>
+
               <h3>ביקורות</h3>
               {selectedPet.reviews && selectedPet.reviews.length > 0 ? (
                 selectedPet.reviews.map((review: any) => (
                   <div key={review.id} className="review">
                     <p className="review-rating">דירוג: {review.rating}/5</p>
                     <p className="review-comment">{review.comment}</p>
+                    {currentUser?.id === review.userId && (
+                      <div className="review-actions">
+                        <button onClick={() => handleEditReview(review)}>✏️ ערוך</button>
+                        <button onClick={() => handleDeleteReview(review.id)}>🗑️ מחק</button>
+                      </div>
+                    )}
                   </div>
                 ))
               ) : (
