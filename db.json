@@ -11,7 +11,6 @@
       "id": "2",
       "name": "דני לוי",
       "email": "dani@example.com",
-<<<<<<< HEAD
       "password": "1234567"
     },
     {
@@ -19,17 +18,6 @@
       "name": "יוסי כהן",
       "email": "M0533171367@GMAIL.COM",
       "password": "123456"
-=======
-      "password": "abcdef",
-      "status": "admin"
-    },
-    {
-      "id": "3",
-      "name": "sa",
-      "email": "sa@example.com",
-      "password": "123456",
-      "status": "customer"
->>>>>>> 3aa5a44fd5ed9101b5367f3ef46c318e4e4d8359
     }
   ],
   "pets": [
