@@ -4,19 +4,24 @@ import { addToCart, removeFromCart } from '../../redux/cartSlice';
 import './Home.scss';
 import { RootState } from '../../redux/store';
 
-const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
-  const [currentUser, setCurrentUser] = useState<any>(null);
 
-useEffect(() => {
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-  setCurrentUser(user);
-}, []);
+
+const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const [pets, setPets] = useState<any[]>([]);
   const [selectedPet, setSelectedPet] = useState<any>(null);
   const [statusFilter, setStatusFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
+
+  const [currentUser, setCurrentUser] = useState<any>(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    setCurrentUser(user);
+    console.log(currentUser);
+
+  }, []);
 
   useEffect(() => {
     let url = 'http://localhost:3001/pets';
@@ -160,24 +165,24 @@ useEffect(() => {
         {cartItems.find(item => item.id === selectedPet.id) ? '❤️' : '🤍'}
       </button>
 
-      <h3>ביקורות</h3>
-      {selectedPet.reviews && selectedPet.reviews.length > 0 ? (
-        selectedPet.reviews.map((review: any) => (
-          <div key={review.id} className="review">
-            <p className="review-rating">דירוג: {review.rating}/5</p>
-            <p className="review-comment">{review.comment}</p>
-            {currentUser?.id === review.userId && (
-              <div className="review-actions">
-                <button onClick={() => handleEditReview(review)}>✏️ ערוך</button>
-                <button onClick={() => handleDeleteReview(review.id)}>🗑️ מחק</button>
-              </div>
-            )}
-          </div>
-        ))
-      ) : (
-        <p className="no-reviews">אין ביקורות זמינות עבור חיה זו.</p>
-      )}
-  
+              <h3>ביקורות</h3>
+              {selectedPet.reviews && selectedPet.reviews.length > 0 ? (
+                selectedPet.reviews.map((review: any) => (
+                  <div key={review.id} className="review">
+                    <p className="review-rating">דירוג: {review.rating}/5</p>
+                    <p className="review-comment">{review.comment}</p>
+                    {String(currentUser?.id) === String(review.userId) && (
+                      <div className="review-actions">
+                        <button onClick={() => handleEditReview(review)}>✏️ ערוך</button>
+                        <button onClick={() => handleDeleteReview(review.id)}>🗑️ מחק</button>
+                      </div>
+                    )}
+
+                  </div>
+                ))
+              ) : (
+                <p className="no-reviews">אין ביקורות זמינות עבור חיה זו.</p>
+              )}
             </div>
           </div>
         )}

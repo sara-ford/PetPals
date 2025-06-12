@@ -9,7 +9,7 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ onShowPersonalInfo }) => {
-    const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -24,11 +24,10 @@ const NavBar: React.FC<NavBarProps> = ({ onShowPersonalInfo }) => {
       <div className="navbar-logo">🐶 Petpals</div>
       <ul className="navbar-links">
         <li><Link to="/">התחברות</Link></li>
-        <li><Link to="/home">דף הבית</Link></li>
-        <li><Link to="/about">החיות שלנו</Link></li>
+        <li><Link to="/home">החיות שלנו</Link></li>
         <li>
           <Link to="/favorites">
-           מועדפים{cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
+            מועדפים{cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
           </Link>
         </li>
         <li>
@@ -43,7 +42,7 @@ const NavBar: React.FC<NavBarProps> = ({ onShowPersonalInfo }) => {
             הפרטים שלי
           </a>
         </li>
-           {isAdmin && <li><Link to="/add-pet">הוסף חיה</Link></li>}
+        {isAdmin && <li><Link to="/add-pet">הוסף חיה</Link></li>}
       </ul>
     </nav>
   );
