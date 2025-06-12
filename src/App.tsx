@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import PersonalInfo from './components/PersonalInfo/PersonalInfo';
 import Favorites from './components/Favorits/Favorits';
 import NavBar from './components/NavBar/NavBar';
+import AddPet from './components/AddPet/AddPet';
 
 const AppContent: React.FC = () => {
   const [showPersonalInfo, setShowPersonalInfo] = useState(false);
@@ -28,6 +29,8 @@ const AppContent: React.FC = () => {
         <Route path="/home" element={<Home onShowPersonalInfo={() => setShowPersonalInfo(true)} />} />
         <Route path="/personal-info" element={<PersonalInfo onClose={() => setShowPersonalInfo(false)} />} />
         <Route path="/favorites" element={<Favorites />} />
+          <Route path="/add-pet" element={<AddPet />} />
+
       </Routes>
     </>
   );

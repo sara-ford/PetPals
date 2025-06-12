@@ -4,12 +4,14 @@
       "id": "1",
       "name": "שרה כהן",
       "email": "sara@example.com",
-      "password": "123456"
+      "password": "123456",
+      "status": "customer"
     },
     {
       "id": "2",
       "name": "דני לוי",
       "email": "dani@example.com",
+<<<<<<< HEAD
       "password": "1234567"
     },
     {
@@ -17,6 +19,17 @@
       "name": "יוסי כהן",
       "email": "M0533171367@GMAIL.COM",
       "password": "123456"
+=======
+      "password": "abcdef",
+      "status": "admin"
+    },
+    {
+      "id": "3",
+      "name": "sa",
+      "email": "sa@example.com",
+      "password": "123456",
+      "status": "customer"
+>>>>>>> 3aa5a44fd5ed9101b5367f3ef46c318e4e4d8359
     }
   ],
   "pets": [
@@ -55,7 +68,7 @@
       "gender": "נקבה",
       "age": 4,
       "status": "למסירה",
-      "image": "https://www.thesprucepets.com/thmb/yH_dVf9ehigKYxqsvP5IHKviUKQ=/724x0/filters:no_upscale():strip_icc()/GettyImages-1313232209-e412c4dc9411489f8197c9c0067c94ed.jpg"
+      "image": "https://topdog.co.il/wp-content/uploads/2023/08/%D7%AA%D7%95%D7%9B%D7%99-%D7%92%D7%90%D7%A7%D7%95-1.jpg"
     },
     {
       "id": "5",
@@ -93,7 +106,7 @@
       "age": 1,
       "status": "למכירה",
       "price": 50,
-      "image": "https://exoticdirect.co.uk/wp-content/uploads/2022/07/ED-ARTICLE-IMAGES-17.png"
+      "image": "https://www.animalcenter.co.il/wp-content/uploads/2021/06/hamster-690108_640.jpg"
     },
     {
       "id": "9",
@@ -112,7 +125,7 @@
       "age": 3,
       "status": "למכירה",
       "price": 200,
-      "image": "https://www.tvmf.org/wp-content/uploads/2024/08/GettyImages-969103888-uai-2064x1249.jpg"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/American_robin_%2871307%29.jpg/1200px-American_robin_%2871307%29.jpg"
     },
     {
       "id": "11",
@@ -207,6 +220,7 @@
       "status": "למסירה",
       "image": "http://www.houstonpettalk.com/wp-content/uploads/2009/11/puppies_1.jpg"
     }
+
   ],
   "reviews": [
     {

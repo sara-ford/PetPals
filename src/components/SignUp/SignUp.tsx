@@ -38,7 +38,7 @@ const SignUp: FC<SignUpProps> = ({ setIsRegistering }) => {
         const maxId = allUsers.length > 0 ? Math.max(...allUsers.map((user: any) => user.id)) : 0;
         const newId = maxId + 1;
 
-        // הוספת המשתמש עם id חדש
+        // הוספת המשתמש עם id חדש וסטטוס customer
         const res = await fetch('http://localhost:3001/users', {
           method: 'POST',
           headers: {
@@ -47,6 +47,7 @@ const SignUp: FC<SignUpProps> = ({ setIsRegistering }) => {
           body: JSON.stringify({
             id: newId,
             ...values,
+            status: 'customer', // שימוש ב-status במקום role
           }),
         });
 

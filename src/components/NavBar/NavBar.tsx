@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
@@ -9,6 +9,14 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ onShowPersonalInfo }) => {
+    const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (user.status === 'admin') {
+      setIsAdmin(true);
+    }
+  }, []);
   const cartItemCount = useSelector((state: RootState) => state.cart.items.length);
 
   return (
@@ -35,6 +43,7 @@ const NavBar: React.FC<NavBarProps> = ({ onShowPersonalInfo }) => {
             הפרטים שלי
           </a>
         </li>
+           {isAdmin && <li><Link to="/add-pet">הוסף חיה</Link></li>}
       </ul>
     </nav>
   );
