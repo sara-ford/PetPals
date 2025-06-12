@@ -20,7 +20,7 @@ const NavBar: React.FC<NavBarProps> = ({ onShowPersonalInfo }) => {
         <li><Link to="/home">החיות שלנו</Link></li>
         <li>
           <Link to="/favorites">
-            הסל שלי {cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
+           מועדפים{cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
           </Link>
         </li>
         <li>
