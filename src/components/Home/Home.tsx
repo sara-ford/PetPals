@@ -4,6 +4,8 @@ import { addToCart, removeFromCart } from '../../redux/cartSlice';
 import './Home.scss';
 import { RootState } from '../../redux/store';
 
+
+
 const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const [pets, setPets] = useState<any[]>([]);
   const [selectedPet, setSelectedPet] = useState<any>(null);
@@ -11,6 +13,15 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const [typeFilter, setTypeFilter] = useState('');
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
+
+  const [currentUser, setCurrentUser] = useState<any>(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    setCurrentUser(user);
+    console.log(currentUser);
+
+  }, []);
 
   useEffect(() => {
     let url = 'http://localhost:3001/pets';
@@ -156,12 +167,13 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
                   <div key={review.id} className="review">
                     <p className="review-rating">דירוג: {review.rating}/5</p>
                     <p className="review-comment">{review.comment}</p>
-                    {currentUser?.id === review.userId && (
+                    {String(currentUser?.id) === String(review.userId) && (
                       <div className="review-actions">
                         <button onClick={() => handleEditReview(review)}>✏️ ערוך</button>
                         <button onClick={() => handleDeleteReview(review.id)}>🗑️ מחק</button>
                       </div>
                     )}
+
                   </div>
                 ))
               ) : (
