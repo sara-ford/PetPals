@@ -23,7 +23,7 @@ const PersonalInfo = ({ onClose }: { onClose: () => void }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('loggedInUser');
+    const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const parsed = JSON.parse(storedUser);
       setUser(parsed);
@@ -51,7 +51,7 @@ const PersonalInfo = ({ onClose }: { onClose: () => void }) => {
           body: JSON.stringify(updatedUser),
         });
         if (res.ok) {
-          localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+          localStorage.setItem('user', JSON.stringify(updatedUser));
           alert('הפרטים נשמרו בהצלחה');
           setIsEditing(false);
           setUser(updatedUser);

@@ -37,21 +37,53 @@ const AddPet = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const finalImage = form.imageFile || form.imageLink;
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    try {
-      await fetch('http://localhost:3001/pets', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, image: finalImage }),
-      });
-      navigate('/home');
-    } catch (err) {
-      console.error('שגיאה בהוספת חיה:', err);
+  const finalImage = form.imageFile || form.imageLink;
+
+  try {
+    // שליפת כל החיות הקיימות כדי לחשב ID הבא
+    const res = await fetch('http://localhost:3001/pets');
+    const pets = await res.json();
+
+    // מציאת ה-id הגבוה ביותר
+    const maxId = pets.reduce((max: number, pet: any) => {
+      const idNum = parseInt(pet.id, 10);
+      return idNum > max ? idNum : max;
+    }, 0);
+    const nextId = (maxId + 1).toString();
+
+    // הכנת גוף הבקשה
+    const newPet: any = {
+      id: nextId,
+      name: form.name,
+      type: form.type,
+      gender: form.gender,
+      age: parseInt(form.age),
+      status: form.status,
+      image: finalImage
+    };
+
+    // אם הסטטוס הוא "למכירה", דרוש גם מחיר — נבקש אותו או נגדיר ברירת מחדל
+    if (form.status === 'למכירה') {
+      const price = prompt('הזן מחיר לחיה:');
+      newPet.price = parseInt(price || '0');
     }
+
+    // שליחת הבקשה
+    await fetch('http://localhost:3001/pets', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newPet),
+    });
+
+    navigate('/home');
+  } catch (err) {
+    console.error('שגיאה בהוספת חיה:', err);
+  }
+
+
   };
 
   return (
