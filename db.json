@@ -208,16 +208,8 @@
       "age": 5,
       "status": "למסירה",
       "image": "http://www.houstonpettalk.com/wp-content/uploads/2009/11/puppies_1.jpg"
-    },
-    {
-      "id": "21",
-      "name": "דרדסים",
-      "type": "דרדס",
-      "gender": "זכר",
-      "age": 20,
-      "status": "למסירה",
-      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.partycool.co.il%2Fitems%2F1621857-%25D7%25AA%25D7%259E%25D7%2595%25D7%25A0%25D7%2594-%25D7%2590%25D7%259B%25D7%2599%25D7%259C%25D7%2594-A4-%25D7%259E%25D7%259C%25D7%2591%25D7%259F-%25D7%2593%25D7%25A8%25D7%2593%25D7%25A1%25D7%2599%25D7%259D&psig=AOvVaw3pRW8R7aP64JwMuh5f6keE&ust=1749821092662000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjz7Nb9640DFQAAAAAdAAAAABAE"
     }
+
   ],
   "reviews": [
     {
@@ -274,3 +266,4 @@
     }
   ]
 }
+
