@@ -29,11 +29,13 @@ const SignIn: FC<SignInProps> = () => {
             user.email === values.email && user.password === values.password
         );
 
-        if (userExists) {
-          setMessage(`ברוכה הבאה, ${userExists.name}!`);
-          setTimeout(() => {
-            navigate('/home'); // Redirect to Home page after 1.5 seconds
-          }, 1500);
+      if (userExists) {
+  localStorage.setItem("loggedInUser", JSON.stringify(userExists));
+  setMessage(`ברוכה הבאה, ${userExists.name}!`);
+  setTimeout(() => {
+    navigate('/home');
+  }, 1500);
+
         } else {
           setMessage('אינך קיים, נא להירשם.');
         }
