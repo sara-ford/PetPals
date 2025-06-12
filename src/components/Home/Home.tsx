@@ -139,40 +139,45 @@ useEffect(() => {
           ))}
         </div>
 
-        {selectedPet && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <button onClick={closePetDetails} className="modal-close">×</button>
-              <img src={selectedPet.image} alt={selectedPet.name} className="modal-image" />
-              <h2>{selectedPet.name}</h2>
-              <p>סוג: {selectedPet.type}</p>
-              <p>מין: {selectedPet.gender}</p>
-              <p>גיל: {selectedPet.age}</p>
-              <p>סטטוס: {selectedPet.status}</p>
-              <button
-                onClick={() => toggleCart(selectedPet)}
-                className="favorite-button"
-              >
-                {cartItems.find(item => item.id === selectedPet.id) ? '❤️' : '🤍'}
-              </button>
+     {selectedPet && (
+  <div className="modal-overlay" onClick={(e) => {
+    if (e.target === e.currentTarget) {
+      closePetDetails();
+    }
+  }}>
+    <div className="modal-content">
+      <button onClick={closePetDetails} className="modal-close">×</button>
+      <img src={selectedPet.image} alt={selectedPet.name} className="modal-image" />
+      <h2>{selectedPet.name}</h2>
+      <p>סוג: {selectedPet.type}</p>
+      <p>מין: {selectedPet.gender}</p>
+      <p>גיל: {selectedPet.age}</p>
+      <p>סטטוס: {selectedPet.status}</p>
+      <button
+        onClick={() => toggleCart(selectedPet)}
+        className="favorite-button"
+      >
+        {cartItems.find(item => item.id === selectedPet.id) ? '❤️' : '🤍'}
+      </button>
 
-              <h3>ביקורות</h3>
-              {selectedPet.reviews && selectedPet.reviews.length > 0 ? (
-                selectedPet.reviews.map((review: any) => (
-                  <div key={review.id} className="review">
-                    <p className="review-rating">דירוג: {review.rating}/5</p>
-                    <p className="review-comment">{review.comment}</p>
-                    {currentUser?.id === review.userId && (
-                      <div className="review-actions">
-                        <button onClick={() => handleEditReview(review)}>✏️ ערוך</button>
-                        <button onClick={() => handleDeleteReview(review.id)}>🗑️ מחק</button>
-                      </div>
-                    )}
-                  </div>
-                ))
-              ) : (
-                <p className="no-reviews">אין ביקורות זמינות עבור חיה זו.</p>
-              )}
+      <h3>ביקורות</h3>
+      {selectedPet.reviews && selectedPet.reviews.length > 0 ? (
+        selectedPet.reviews.map((review: any) => (
+          <div key={review.id} className="review">
+            <p className="review-rating">דירוג: {review.rating}/5</p>
+            <p className="review-comment">{review.comment}</p>
+            {currentUser?.id === review.userId && (
+              <div className="review-actions">
+                <button onClick={() => handleEditReview(review)}>✏️ ערוך</button>
+                <button onClick={() => handleDeleteReview(review.id)}>🗑️ מחק</button>
+              </div>
+            )}
+          </div>
+        ))
+      ) : (
+        <p className="no-reviews">אין ביקורות זמינות עבור חיה זו.</p>
+      )}
+  
             </div>
           </div>
         )}
