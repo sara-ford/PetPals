@@ -228,18 +228,25 @@
       "comment": "כלב טוב ומסור, קצת שובב לפעמים."
     },
     {
-      "id": "3",
-      "petId": 10,
-      "userId": 2,
-      "rating": 3,
-      "comment": "הציפור שרה יפה, אבל קצת רועשת."
+      "id": "ae58",
+      "petId": "2",
+      "userId": "1",
+      "rating": 2,
+      "comment": "ניסוי"
+    },
+    {
+      "id": "492d",
+      "petId": "5",
+      "userId": "1",
+      "rating": 1,
+      "comment": "ניסוי"
     },
     {
       "id": "4",
-      "petId": 15,
-      "userId": 4,
-      "rating": 5,
-      "comment": "חתול מאוד עדין ונעים."
+      "petId": "5",
+      "userId": "2",
+      "rating": 4,
+      "comment": "חח"
     }
   ]
 }
