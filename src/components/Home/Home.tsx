@@ -5,13 +5,21 @@ import { setMessage } from '../../redux/messageSlice';
 import { RootState } from '../../redux/store';
 import './Home.scss';
 
-// ✅ הוספת טיפוס לפרופס
-interface HomeProps {
-  onShowPersonalInfo: () => void;
-}
+// Placeholder PetCard component (replace with actual implementation)
+const PetCard = ({ pet }: { pet: any }) => (
+  <div className="pet-card">
+    <img src={pet.image} alt={pet.name} className="pet-image" />
+    <div className="pet-info">
+      <h2>{pet.name}</h2>
+      <p>סוג: {pet.type}</p>
+      <p>מין: {pet.gender}</p>
+      <p>גיל: {pet.age}</p>
+      <p>סטטוס: {pet.status}</p>
+    </div>
+  </div>
+);
 
-// ✅ הגדרת הקומפוננטה עם הפרופס
-const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
+const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const [pets, setPets] = useState<any[]>([]);
   const [selectedPet, setSelectedPet] = useState<any>(null);
   const [statusFilter, setStatusFilter] = useState('');
@@ -22,18 +30,26 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
   const [editComment, setEditComment] = useState('');
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [users, setUsers] = useState<any[]>([]);
-
-  const cartItems = useSelector((state: RootState) => state.cart.items);
   const currentUser = useSelector((state: RootState) => state.user.user);
+  const isAdmin = currentUser?.status === 'admin';
+  const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
-  const isAdmin = currentUser?.status === 'admin';
+  const petsPerPage = 20;
+  const [currentPage, setCurrentPage] = useState(1);
+  const indexOfLastPet = currentPage * petsPerPage;
+  const indexOfFirstPet = indexOfLastPet - petsPerPage;
+  const currentPets = pets.slice(indexOfFirstPet, indexOfLastPet);
+  const totalPages = Math.ceil(pets.length / petsPerPage);
 
   useEffect(() => {
     fetch('http://localhost:3001/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => {
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to fetch users');
+        return response.json();
+      })
+      .then((data) => setUsers(data))
+      .catch((error) => {
         console.error('Error fetching users:', error);
         dispatch(setMessage({ type: 'error', text: 'שגיאה בטעינת משתמשים' }));
       });
@@ -47,9 +63,12 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
     if (params.length) url += `?${params.join('&')}`;
 
     fetch(url)
-      .then(response => response.json())
-      .then(data => setPets(data))
-      .catch(error => {
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to fetch pets');
+        return response.json();
+      })
+      .then((data) => setPets(data))
+      .catch((error) => {
         console.error('Error fetching pets:', error);
         dispatch(setMessage({ type: 'error', text: 'שגיאה בטעינת החיות' }));
       });
@@ -75,7 +94,7 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
       age: pet.age,
       status: pet.status,
     };
-    const isInCart = cartItems.find(item => item.id === pet.id);
+    const isInCart = cartItems.find((item: any) => item.id === pet.id);
     if (isInCart) {
       dispatch(removeFromCart(pet.id));
       dispatch(setMessage({ type: 'success', text: `החיה ${pet.name} הוסרה מהסל!` }));
@@ -87,15 +106,18 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
 
   const openPetDetails = (pet: any) => {
     fetch(`http://localhost:3001/reviews?petId=${pet.id}`)
-      .then(response => response.json())
-      .then(reviews => {
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to fetch reviews');
+        return response.json();
+      })
+      .then((reviews) => {
         const updatedReviews = reviews.map((review: any) => ({
           ...review,
-          username: users.find(user => user.id === review.userId)?.name || 'משתמש אנונימי',
+          username: users.find((user: any) => user.id === review.userId)?.name || 'משתמש אנונימי',
         }));
         setSelectedPet({ ...pet, reviews: updatedReviews });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching reviews:', error);
         setSelectedPet({ ...pet, reviews: [] });
         dispatch(setMessage({ type: 'error', text: 'שגיאה בטעינת ביקורות' }));
@@ -104,21 +126,22 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
 
   const closePetDetails = () => setSelectedPet(null);
 
-  const handleDeletePet = async (petId: string) => {
+  const handleDeletePet = async (petId: number) => {
     const confirmDelete = window.confirm('האם אתה בטוח שברצונך למחוק את החיה?');
     if (!confirmDelete) return;
 
     try {
-      await fetch(`http://localhost:3001/pets/${petId}`, {
+      const response = await fetch(`http://localhost:3001/pets/${petId}`, {
         method: 'DELETE',
       });
-      setPets(prevPets => prevPets.filter(p => p.id !== petId));
+      if (!response.ok) throw new Error('Failed to delete pet');
+      setPets((prevPets) => prevPets.filter((p) => p.id !== petId));
       if (selectedPet?.id === petId) {
         setSelectedPet(null);
       }
       dispatch(setMessage({ type: 'success', text: 'החיה נמחקה בהצלחה!' }));
     } catch (error) {
-      console.error('שגיאה במחיקת חיה:', error);
+      console.error('Error deleting pet:', error);
       dispatch(setMessage({ type: 'error', text: 'שגיאה במחיקת החיה' }));
     }
   };
@@ -184,8 +207,8 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
 
     const newReview = {
       petId: selectedPet.id,
-      userId: currentUser.id,
-      username: currentUser.name || 'משתמש אנונימי',
+      userId: currentUser?.id,
+      username: currentUser?.name || 'משתמש אנונימי',
       rating: newRating,
       comment: newComment || '',
     };
@@ -202,7 +225,7 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
           ...prev,
           reviews: [
             ...prev.reviews,
-            { ...savedReview, username: currentUser.name || 'משתמש אנונימי' },
+            { ...savedReview, username: currentUser?.name || 'משתמש אנונימי' },
           ],
         }));
         setNewRating(0);
@@ -221,7 +244,7 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
   const renderStars = (rating: number, setRating: (value: number) => void) => {
     return (
       <div className="star-rating">
-        {[1, 2, 3, 4, 5].map(star => (
+        {[1, 2, 3, 4, 5].map((star) => (
           <span
             key={star}
             className={`star ${star <= rating ? 'filled' : ''}`}
@@ -251,7 +274,7 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
             <select
               id="status-filter"
               value={statusFilter}
-              onChange={e => setStatusFilter(e.target.value)}
+              onChange={(e) => setStatusFilter(e.target.value)}
             >
               <option value="">הכל</option>
               <option value="למסירה">למסירה</option>
@@ -263,7 +286,7 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
             <select
               id="type-filter"
               value={typeFilter}
-              onChange={e => setTypeFilter(e.target.value)}
+              onChange={(e) => setTypeFilter(e.target.value)}
             >
               <option value="">הכל</option>
               <option value="כלב">כלב</option>
@@ -273,8 +296,9 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
             </select>
           </div>
         </div>
+
         <div className="pet-grid">
-          {pets.map((pet) => (
+          {currentPets.map((pet) => (
             <div key={pet.id} className="pet-card" onClick={() => openPetDetails(pet)}>
               <img src={pet.image || 'https://via.placeholder.com/250'} alt={pet.name} className="pet-image" />
               <div className="pet-info">
@@ -291,7 +315,7 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
                     }}
                     className="favorite-button"
                   >
-                    {cartItems.find((item) => item.id === pet.id) ? (
+                    {cartItems.find((item: any) => item.id === pet.id) ? (
                       <svg className="cart-icon filled" viewBox="0 0 24 24">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                       </svg>
@@ -319,10 +343,27 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
             </div>
           ))}
         </div>
+
+        <div className="pagination">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span>Page {currentPage} of {totalPages}</span>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
+
         {selectedPet && (
           <div
             className="modal-overlay"
-            onClick={e => {
+            onClick={(e) => {
               if (e.target === e.currentTarget) {
                 closePetDetails();
               }
@@ -341,7 +382,7 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
               <p>גיל: {selectedPet.age}</p>
               <p>סטטוס: {selectedPet.status}</p>
               <button onClick={() => toggleCart(selectedPet)} className="favorite-button">
-                {cartItems?.find(item => item.id === selectedPet.id) ? (
+                {cartItems?.find((item: any) => item.id === selectedPet.id) ? (
                   <svg className="icon filled" viewBox="0 0 24 24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                   </svg>
@@ -364,7 +405,7 @@ const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
                       <>
                         <textarea
                           value={editComment}
-                          onChange={e => setEditComment(e.target.value)}
+                          onChange={(e) => setEditComment(e.target.value)}
                           rows={2}
                           className="edit-textarea"
                         />

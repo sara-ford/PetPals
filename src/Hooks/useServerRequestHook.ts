@@ -1,41 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export function useServerRequest<T>(
-  requestFn: () => Promise<T>,
-  {
-    onLoad,
-    onSuccess,
-    onError,
-    autoLoad = true,
-  }: {
-    onLoad?: () => void;
-    onSuccess?: (data: T) => void;
-    onError?: (err: any) => void;
-    autoLoad?: boolean;
-  } = {}
-) {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<any>(null);
+interface FetchState {
+  loading: boolean;
+  data: any[];
+  error: string | null;
+}
 
-  const fetchData = async () => {
-    setLoading(true);
-    onLoad?.();
-    try {
-      const result = await requestFn();
-      setData(result);
-      onSuccess?.(result);
-    } catch (err) {
-      setError(err);
-      onError?.(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+const useFetchPets = (statusFilter: string, typeFilter: string) => {
+  const [state, setState] = useState<FetchState>({ loading: true, data: [], error: null });
 
   useEffect(() => {
-    if (autoLoad) fetchData();
-  }, []);
+    let url = 'http://localhost:3001/pets';
+    const params = [];
+    if (statusFilter) params.push(`status=${encodeURIComponent(statusFilter)}`);
+    if (typeFilter) params.push(`type=${encodeURIComponent(typeFilter)}`);
+    if (params.length) url += `?${params.join('&')}`;
 
-  return { data, loading, error, refetch: fetchData };
-}
+    setState({ loading: true, data: [], error: null });
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => setState({ loading: false, data, error: null }))
+      .catch(error => setState({ loading: false, data: [], error: error.message }));
+  }, [statusFilter, typeFilter]);
+
+  return { ...state };
+};
+
+export default useFetchPets;
