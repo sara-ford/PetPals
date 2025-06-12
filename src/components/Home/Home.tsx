@@ -29,7 +29,6 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const [editReviewId, setEditReviewId] = useState<string | null>(null);
   const [editComment, setEditComment] = useState('');
   const [showReviewForm, setShowReviewForm] = useState(false);
-  const [nextReviewId, setNextReviewId] = useState(1);
   const [users, setUsers] = useState<any[]>([]);
   const currentUser = useSelector((state: RootState) => state.user.user);
   const isAdmin = currentUser?.status === 'admin';
@@ -117,12 +116,10 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
           username: users.find((user: any) => user.id === review.userId)?.name || 'משתמש אנונימי',
         }));
         setSelectedPet({ ...pet, reviews: updatedReviews });
-        setNextReviewId(reviews.length + 1);
       })
       .catch((error) => {
         console.error('Error fetching reviews:', error);
         setSelectedPet({ ...pet, reviews: [] });
-        setNextReviewId(1);
         dispatch(setMessage({ type: 'error', text: 'שגיאה בטעינת ביקורות' }));
       });
   };
@@ -199,10 +196,16 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   };
 
   const submitReview = async () => {
-    if (!newRating) return;
+    if (!newRating) {
+      dispatch(setMessage({ type: 'error', text: 'אנא בחר דירוג לביקורת' }));
+      return;
+    }
+    if (!currentUser?.id) {
+      dispatch(setMessage({ type: 'error', text: 'אנא התחבר כדי להוסיף ביקורת' }));
+      return;
+    }
 
     const newReview = {
-      id: nextReviewId.toString(),
       petId: selectedPet.id,
       userId: currentUser?.id,
       username: currentUser?.name || 'משתמש אנונימי',
@@ -227,7 +230,6 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
         }));
         setNewRating(0);
         setNewComment('');
-        setNextReviewId(nextReviewId + 1);
         setShowReviewForm(false);
         dispatch(setMessage({ type: 'success', text: 'הביקורת נוספה בהצלחה!' }));
       } else {
@@ -257,7 +259,15 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
 
   return (
     <div className="home-container">
-      <div className="content">
+      <div className="hero-section">
+        <div className="hero-overlay">
+          <h1 className="hero-title">מצא את החבר הכי טוב שלך!</h1>
+          <p className="hero-subtitle">גלה חיות מחמד מקסימות שמחכות לבית חם</p>
+          <a href="#pets" className="hero-button">ראה את החיות שלנו</a>
+        </div>
+      </div>
+      <div className="content" id="pets">
+        <h2 className="section-title">החיות שלנו</h2>
         <div className="filters">
           <div className="filter-group">
             <label htmlFor="status-filter">סינון לפי סטטוס:</label>
@@ -290,9 +300,9 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
         <div className="pet-grid">
           {currentPets.map((pet) => (
             <div key={pet.id} className="pet-card" onClick={() => openPetDetails(pet)}>
-              <img src={pet.image} alt={pet.name} className="pet-image" />
+              <img src={pet.image || 'https://via.placeholder.com/250'} alt={pet.name} className="pet-image" />
               <div className="pet-info">
-                <h2>{pet.name}</h2>
+                <h3>{pet.name}</h3>
                 <p>סוג: {pet.type}</p>
                 <p>מין: {pet.gender}</p>
                 <p>גיל: {pet.age}</p>
@@ -365,7 +375,7 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
                   <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                 </svg>
               </button>
-              <img src={selectedPet.image} alt={selectedPet.name} className="modal-image" />
+              <img src={selectedPet.image || 'https://via.placeholder.com/300'} alt={selectedPet.name} className="modal-image" />
               <h2>{selectedPet.name}</h2>
               <p>סוג: {selectedPet.type}</p>
               <p>מין: {selectedPet.gender}</p>
@@ -382,7 +392,6 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
                   </svg>
                 )}
               </button>
-
               <h3>ביקורות</h3>
               {selectedPet.reviews && selectedPet.reviews.length > 0 ? (
                 selectedPet.reviews.map((review: any) => (
@@ -455,7 +464,6 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
               ) : (
                 <p className="no-reviews">אין ביקורות זמינות עבור חיה זו.</p>
               )}
-
               <div className="review-form">
                 <button
                   onClick={() => setShowReviewForm(!showReviewForm)}
@@ -472,11 +480,15 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
                     </div>
                     <textarea
                       value={newComment}
-                      onChange={(e) => setNewComment(e.target.value)}
+                      onChange={e => setNewComment(e.target.value)}
                       placeholder="כתוב כאן את הביקורת שלך (אופציונלי)..."
                       className="review-textarea"
                     />
-                    <button onClick={submitReview} className="submit-review" disabled={!newRating}>
+                    <button
+                      onClick={submitReview}
+                      className="submit-review"
+                      disabled={!newRating}
+                    >
                       שלח ביקורת
                     </button>
                   </div>

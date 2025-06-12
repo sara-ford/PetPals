@@ -16,9 +16,9 @@ const Favorites: FC = () => {
 
   return (
     <div className="favorites-container">
-      <h1>הסל שלי</h1>
+      <h1>המעודפים שלי</h1>
       {cartItems.length === 0 ? (
-        <p>הסל שלך ריק.</p>
+        <p>): אין לך מעודפים</p>
       ) : (
         <div className="cart-grid">
           {cartItems.map(item => (

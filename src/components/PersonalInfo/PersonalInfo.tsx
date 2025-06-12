@@ -47,7 +47,11 @@ const PersonalInfo = ({ onClose }: { onClose: () => void }) => {
       await validationSchema.validate(formData, { abortEarly: false });
       setErrors({});
       if (user) {
-        const updatedUser = { ...formData };
+        const updatedUser = {
+          ...formData,
+          id: user.id,
+          status: user.status, // Preserve status
+        };
         const res = await fetch(`http://localhost:3001/users/${user.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -71,7 +75,11 @@ const PersonalInfo = ({ onClose }: { onClose: () => void }) => {
     }
   };
 
-  if (!user) return null;
+  if (!user) {
+    dispatch(setMessage({ type: 'error', text: 'אנא התחבר כדי לצפות בפרטים האישיים' }));
+    onClose();
+    return null;
+  }
 
   return (
     <div className="personal-modal-overlay" onClick={onClose}>
@@ -81,6 +89,7 @@ const PersonalInfo = ({ onClose }: { onClose: () => void }) => {
             <h2>הפרטים שלי</h2>
             <p><strong>שם:</strong> {user.name}</p>
             <p><strong>אימייל:</strong> {user.email}</p>
+           
             <button
               className="edit-button-icon"
               onClick={() => setIsEditing(true)}
