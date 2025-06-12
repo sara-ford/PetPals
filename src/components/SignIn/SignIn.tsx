@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './SignIn.scss';
 
-interface SignInProps {}
+interface SignInProps { }
 
 const SignIn: FC<SignInProps> = () => {
   const [message, setMessage] = useState('');
@@ -30,10 +30,12 @@ const SignIn: FC<SignInProps> = () => {
         );
 
         if (userExists) {
-          setMessage(`ברוכה הבאה, ${userExists.name}!`);
+          localStorage.setItem('user', JSON.stringify(userExists));
+          setMessage(`ברוך הבא, ${userExists.name}!`);
           setTimeout(() => {
-            navigate('/home'); // Redirect to Home page after 1.5 seconds
+            navigate('/home');
           }, 1500);
+
         } else {
           setMessage('אינך קיים, נא להירשם.');
         }
