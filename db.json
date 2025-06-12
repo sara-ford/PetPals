@@ -1,17 +1,16 @@
 {
   "users": [
     {
-      "id": "1",
       "name": "שרה כהן",
       "email": "sara@example.com",
       "password": "123456",
-      "status": "customer"
+      "id": "1"
     },
     {
       "id": "2",
       "name": "דני לוי",
       "email": "dani@example.com",
-      "password": "abcdef",
+      "password": "123456",
       "status": "admin"
     },
     {
@@ -236,25 +235,42 @@
       "comment": "כלב טוב ומסור, קצת שובב לפעמים."
     },
     {
-      "id": "ae58",
-      "petId": "2",
-      "userId": "1",
-      "rating": 2,
-      "comment": "ניסוי"
-    },
-    {
-      "id": "492d",
-      "petId": "5",
-      "userId": "1",
-      "rating": 1,
-      "comment": "ניסוי"
-    },
-    {
       "id": "4",
       "petId": "5",
       "userId": "2",
       "rating": 4,
       "comment": "חח"
+    },
+    {
+      "id": "1",
+      "petId": "3",
+      "userId": "2",
+      "rating": 4,
+      "comment": "ללל"
+    },
+    {
+      "id": "1",
+      "petId": "1",
+      "userId": "1",
+      "username": "שרה כהן",
+      "rating": 2,
+      "comment": ""
+    },
+    {
+      "id": "1",
+      "petId": "4",
+      "userId": "1",
+      "username": "שרה כהן",
+      "rating": 4,
+      "comment": "ךךךך"
+    },
+    {
+      "id": "2",
+      "petId": "3",
+      "userId": "1",
+      "username": "שרה כהן",
+      "rating": 3,
+      "comment": ""
     }
   ]
 }

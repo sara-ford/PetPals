@@ -187,7 +187,7 @@
   svg {
     width: 24px;
     height: 24px;
-    fill: all 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .filled {
@@ -202,6 +202,13 @@
   margin: 12px 0;
   border-radius: 6px;
   transition: background-color 0.2s ease;
+}
+
+.review-username {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .review-rating {
@@ -387,6 +394,11 @@
 
       &:hover {
         background: #218838;
+      }
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
       }
     }
   }
