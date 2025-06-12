@@ -7,12 +7,6 @@ import { RootState } from '../../redux/store';
 
 
 const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
-  const [currentUser, setCurrentUser] = useState<any>(null);
-
-useEffect(() => {
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-  setCurrentUser(user);
-}, []);
   const [pets, setPets] = useState<any[]>([]);
   const [selectedPet, setSelectedPet] = useState<any>(null);
   const [statusFilter, setStatusFilter] = useState('');
