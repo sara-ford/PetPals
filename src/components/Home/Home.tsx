@@ -74,6 +74,23 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
     const updatedReviews = selectedPet.reviews.filter((r: any) => r.id !== reviewId);
     setSelectedPet({ ...selectedPet, reviews: updatedReviews });
   };
+  const handleDeletePet = async (petId: number) => {
+    const confirmDelete = window.confirm("האם אתה בטוח שברצונך למחוק את החיה?");
+    if (!confirmDelete) return;
+
+    try {
+      await fetch(`http://localhost:3001/pets/${petId}`, {
+        method: 'DELETE',
+      });
+      // עדכון המצב המקומי - הסרת החיה מהרשימה
+      setPets(prevPets => prevPets.filter(p => p.id !== petId));
+      if (selectedPet?.id === petId) {
+        setSelectedPet(null);
+      }
+    } catch (error) {
+      console.error("שגיאה במחיקת חיה:", error);
+    }
+  };
 
   const handleEditReview = (review: any) => {
     const newComment = prompt('עדכן את הביקורת שלך:', review.comment);
@@ -130,40 +147,56 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
                 <p>מין: {pet.gender}</p>
                 <p>גיל: {pet.age}</p>
                 <p>סטטוס: {pet.status}</p>
-                <button
-                  onClick={e => {
-                    e.stopPropagation();
-                    toggleCart(pet);
-                  }}
-                  className="favorite-button"
-                >
-                  {cartItems.find(item => item.id === pet.id) ? '❤️' : '🤍'}
-                </button>
+                <div className="action-buttons">
+                  <button
+                    onClick={e => {
+                      e.stopPropagation();
+                      toggleCart(pet);
+                    }}
+                    className="favorite-button"
+                  >
+                    {cartItems.find(item => item.id === pet.id) ? '❤️' : '🤍'}
+                  </button>
+
+                  {currentUser?.status === 'admin' && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeletePet(pet.id);
+                      }}
+                      className="delete-pet-button"
+                      title="מחק חיה"
+                    >
+                      🗑️
+                    </button>
+                  )}
+                </div>
+
               </div>
             </div>
           ))}
         </div>
 
-     {selectedPet && (
-  <div className="modal-overlay" onClick={(e) => {
-    if (e.target === e.currentTarget) {
-      closePetDetails();
-    }
-  }}>
-    <div className="modal-content">
-      <button onClick={closePetDetails} className="modal-close">×</button>
-      <img src={selectedPet.image} alt={selectedPet.name} className="modal-image" />
-      <h2>{selectedPet.name}</h2>
-      <p>סוג: {selectedPet.type}</p>
-      <p>מין: {selectedPet.gender}</p>
-      <p>גיל: {selectedPet.age}</p>
-      <p>סטטוס: {selectedPet.status}</p>
-      <button
-        onClick={() => toggleCart(selectedPet)}
-        className="favorite-button"
-      >
-        {cartItems.find(item => item.id === selectedPet.id) ? '❤️' : '🤍'}
-      </button>
+        {selectedPet && (
+          <div className="modal-overlay" onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              closePetDetails();
+            }
+          }}>
+            <div className="modal-content">
+              <button onClick={closePetDetails} className="modal-close">×</button>
+              <img src={selectedPet.image} alt={selectedPet.name} className="modal-image" />
+              <h2>{selectedPet.name}</h2>
+              <p>סוג: {selectedPet.type}</p>
+              <p>מין: {selectedPet.gender}</p>
+              <p>גיל: {selectedPet.age}</p>
+              <p>סטטוס: {selectedPet.status}</p>
+              <button
+                onClick={() => toggleCart(selectedPet)}
+                className="favorite-button"
+              >
+                {cartItems.find(item => item.id === selectedPet.id) ? '❤️' : '🤍'}
+              </button>
 
               <h3>ביקורות</h3>
               {selectedPet.reviews && selectedPet.reviews.length > 0 ? (
