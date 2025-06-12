@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { PencilSquare } from 'react-bootstrap-icons'; // אייקון עריכה חמוד מ-bootstrap-icons
+import { PencilSquare } from 'react-bootstrap-icons';
+import { RootState, AppDispatch } from '../../redux/store';
+import { updateUser } from '../../redux/userSlice';
+import { setMessage } from '../../redux/messageSlice';
 import './PersonalInfo.scss';
 
 interface User {
@@ -8,6 +12,7 @@ interface User {
   name: string;
   email: string;
   password: string;
+  status?: string;
 }
 
 const validationSchema = Yup.object().shape({
@@ -17,23 +22,21 @@ const validationSchema = Yup.object().shape({
 });
 
 const PersonalInfo = ({ onClose }: { onClose: () => void }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const user = useSelector((state: RootState) => state.user.user);
+  const dispatch = useDispatch<AppDispatch>();
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [errors, setErrors] = useState<any>({});
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      const parsed = JSON.parse(storedUser);
-      setUser(parsed);
+    if (user) {
       setFormData({
-        name: parsed.name,
-        email: parsed.email,
-        password: parsed.password,
+        name: user.name,
+        email: user.email,
+        password: user.password,
       });
     }
-  }, []);
+  }, [user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,20 +47,22 @@ const PersonalInfo = ({ onClose }: { onClose: () => void }) => {
       await validationSchema.validate(formData, { abortEarly: false });
       setErrors({});
       if (user) {
-        const updatedUser = { ...user, ...formData };
+        const updatedUser = { ...formData };
         const res = await fetch(`http://localhost:3001/users/${user.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updatedUser),
         });
         if (res.ok) {
-          localStorage.setItem('user', JSON.stringify(updatedUser));
-          alert('הפרטים נשמרו בהצלחה');
+          dispatch(updateUser(updatedUser));
+          dispatch(setMessage({ type: 'success', text: 'הפרטים נשמרו בהצלחה!' }));
           setIsEditing(false);
-          setUser(updatedUser);
+        } else {
+          dispatch(setMessage({ type: 'error', text: 'שגיאה בשמירת הפרטים' }));
         }
       }
     } catch (err: any) {
+      dispatch(setMessage({ type: 'error', text: 'שגיאה באימות הפרטים' }));
       const validationErrors: any = {};
       err.inner?.forEach((e: any) => {
         validationErrors[e.path] = e.message;

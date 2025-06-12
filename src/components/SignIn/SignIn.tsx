@@ -1,14 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { setUser } from '../../redux/userSlice';
+import { setMessage } from '../../redux/messageSlice';
 import './SignIn.scss';
 
-interface SignInProps { }
+interface SignInProps {}
 
 const SignIn: FC<SignInProps> = () => {
-  const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -21,7 +24,7 @@ const SignIn: FC<SignInProps> = () => {
     }),
     onSubmit: async (values) => {
       try {
-        const res = await fetch("http://localhost:3001/users");
+        const res = await fetch('http://localhost:3001/users');
         const users = await res.json();
 
         const userExists = users.find(
@@ -30,17 +33,16 @@ const SignIn: FC<SignInProps> = () => {
         );
 
         if (userExists) {
-          localStorage.setItem('user', JSON.stringify(userExists));
-          setMessage(`ברוך הבא, ${userExists.name}!`);
+          dispatch(setUser(userExists));
+          dispatch(setMessage({ type: 'success', text: `ברוך הבא, ${userExists.name}!` }));
           setTimeout(() => {
             navigate('/home');
           }, 1500);
-
         } else {
-          setMessage('אינך קיים, נא להירשם.');
+          dispatch(setMessage({ type: 'error', text: 'אימייל או סיסמה שגויים' }));
         }
       } catch (error) {
-        setMessage('אירעה שגיאה בשרת, נסה שוב מאוחר יותר.');
+        dispatch(setMessage({ type: 'error', text: 'שגיאה בהתחברות, נסה שוב מאוחר יותר' }));
       }
     },
   });
@@ -76,7 +78,6 @@ const SignIn: FC<SignInProps> = () => {
 
         <button type="submit" className="btn btn-primary w-100">התחבר</button>
       </form>
-      {message && <p className="message text-center mt-3">{message}</p>}
     </div>
   );
 };

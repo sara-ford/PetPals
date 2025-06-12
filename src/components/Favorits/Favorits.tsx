@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart } from '../../redux/cartSlice';
+import { setMessage } from '../../redux/messageSlice';
 import { RootState } from '../../redux/store';
 import './Favorits.scss';
 
@@ -8,11 +9,16 @@ const Favorites: FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
+  const handleRemove = (id: number, name: string) => {
+    dispatch(removeFromCart(id));
+    dispatch(setMessage({ type: 'success', text: `החיה ${name} הוסרה מהסל!` }));
+  };
+
   return (
     <div className="favorites-container">
-      <h1>המעודפים שלי</h1>
+      <h1>הסל שלי</h1>
       {cartItems.length === 0 ? (
-        <p>לא בחרת מועדפים</p>
+        <p>הסל שלך ריק.</p>
       ) : (
         <div className="cart-grid">
           {cartItems.map(item => (
@@ -25,10 +31,10 @@ const Favorites: FC = () => {
                 <p>גיל: {item.age}</p>
                 <p>סטטוס: {item.status}</p>
                 <button
-                  onClick={() => dispatch(removeFromCart(item.id))}
+                  onClick={() => handleRemove(item.id, item.name)}
                   className="remove-button"
                 >
-                  פחות מעודף
+                  הסר מהסל
                 </button>
               </div>
             </div>
