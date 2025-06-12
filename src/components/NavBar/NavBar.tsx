@@ -23,7 +23,7 @@ const NavBar: React.FC<NavBarProps> = ({ onShowPersonalInfo }) => {
     <nav className="navbar">
       <div className="navbar-logo">🐶 Petpals</div>
       <ul className="navbar-links">
-        <li><Link to="/">התחברות</Link></li>
+        <li><Link to="/">החלף משתמש</Link></li>
         <li><Link to="/home">החיות שלנו</Link></li>
         <li>
           <Link to="/favorites">

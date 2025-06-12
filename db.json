@@ -209,8 +209,197 @@
       "age": 5,
       "status": "למסירה",
       "image": "http://www.houstonpettalk.com/wp-content/uploads/2009/11/puppies_1.jpg"
+    },
+    {
+      "id": "21",
+      "name": "בובי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 2,
+      "status": "למכירה",
+      "price": 1000,
+      "image": "https://www.dailypaws.com/thmb/TdFOLiXHTv9wvE9aCFHrsF2XyZ0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/maltese-puppy-lying-down-1168236260-2000-7619c6e2dc9240bfb09f3858dc189ef0.jpg"
+    },
+    {
+      "id": "22",
+      "name": "לוצי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 1,
+      "status": "למסירה",
+      "image": "https://cdn.britannica.com/74/233774-050-2A5E0C19/Gray-tabby-kitten-lying-on-blanket.jpg"
+    },
+    {
+      "id": "23",
+      "name": "טיטו",
+      "type": "תוכי",
+      "gender": "זכר",
+      "age": 3,
+      "status": "למכירה",
+      "price": 300,
+      "image": "https://www.thesprucepets.com/thmb/vIVhpuj5QdlHKPVmJ0uS6_7nGGg=/1500x0/filters:no_upscale():strip_icc()/GettyImages-1168455084-f6339ce4420e4fd7a92f47bd264194f5.jpg"
+    },
+    {
+      "id": "24",
+      "name": "שוקו",
+      "type": "אוגר",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למסירה",
+      "image": "https://www.thesprucepets.com/thmb/qmMR2QubyeW8IoeNvF9ElEkMrDI=/3000x0/filters:no_upscale():strip_icc()/GettyImages-1214702412-0ff891350d914fcaa06d3aa4b91b44e4.jpg"
+    },
+    {
+      "id": "25",
+      "name": "ביסלי",
+      "type": "כלב",
+      "gender": "נקבה",
+      "age": 4,
+      "status": "למכירה",
+      "price": 950,
+      "image": "https://www.purina.com/sites/default/files/styles/kraken_generic_max_width_2400/public/2023-10/samoyed-dog.jpg"
+    },
+    {
+      "id": "26",
+      "name": "נוגט",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למסירה",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Siam_lilacpoint.jpg/800px-Siam_lilacpoint.jpg"
+    },
+    {
+      "id": "27",
+      "name": "ריקי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למכירה",
+      "price": 1100,
+      "image": "https://cdn.petcarerx.com/blog/wp-content/uploads/2023/10/shutterstock_1182659123.jpg"
+    },
+    {
+      "id": "28",
+      "name": "קווין",
+      "type": "תוכי",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למסירה",
+      "image": "https://parrotfunhouse.com/cdn/shop/articles/conure_1024x.jpg"
+    },
+    {
+      "id": "29",
+      "name": "לוקי",
+      "type": "חתול",
+      "gender": "זכר",
+      "age": 3,
+      "status": "למכירה",
+      "price": 780,
+      "image": "https://static.vecteezy.com/system/resources/previews/018/934/316/large_2x/cute-domestic-cat-portrait-of-kitten-cat-pet-domestic-animal-free-photo.jpg"
+    },
+    {
+      "id": "30",
+      "name": "סנדי",
+      "type": "כלב",
+      "gender": "נקבה",
+      "age": 5,
+      "status": "למסירה",
+      "image": "https://hips.hearstapps.com/hmg-prod/images/close-up-of-dog-sitting-on-field-royalty-free-image-1610390225.jpg"
+    },
+    {
+      "id": "31",
+      "name": "דובי",
+      "type": "ארנב",
+      "gender": "זכר",
+      "age": 2,
+      "status": "למכירה",
+      "price": 150,
+      "image": "https://i.pinimg.com/736x/b2/44/c7/b244c78389bc57cd334dc9ac9b162c3a.jpg"
+    },
+    {
+      "id": "32",
+      "name": "סימבה",
+      "type": "חתול",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למסירה",
+      "image": "https://i.natgeofe.com/n/b2fa965f-b964-4b6d-a39b-8c0aa7d6c343/01-cats-domesticated-nationalgeographic_1459494.jpg"
+    },
+    {
+      "id": "33",
+      "name": "בל",
+      "type": "תוכי",
+      "gender": "נקבה",
+      "age": 3,
+      "status": "למכירה",
+      "price": 400,
+      "image": "https://www.birdbarn.ca/wp-content/uploads/2022/02/sun-conure.jpg"
+    },
+    {
+      "id": "34",
+      "name": "טופי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 2,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1207816_1280.jpg"
+    },
+    {
+      "id": "35",
+      "name": "חמודי",
+      "type": "אוגר",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למכירה",
+      "price": 45,
+      "image": "https://cdn.shopify.com/s/files/1/0680/4150/7113/files/hamster-on-hand_1024x1024.jpg"
+    },
+    {
+      "id": "36",
+      "name": "רוזי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 4,
+      "status": "למסירה",
+      "image": "https://i.pinimg.com/originals/6e/68/4b/6e684be1563fa8cb1c653fe6dbd621e1.jpg"
+    },
+    {
+      "id": "37",
+      "name": "במבי",
+      "type": "כלב",
+      "gender": "נקבה",
+      "age": 3,
+      "status": "למכירה",
+      "price": 980,
+      "image": "https://www.dailypaws.com/thmb/Kbg7OL7z49mB1asvL28F0IStW-s=/1500x0/filters:no_upscale():strip_icc()/pomeranian-dog-177213094-2000-d2ee8c5a8ae14db29b3d11f01994f3ec.jpg"
+    },
+    {
+      "id": "38",
+      "name": "סופי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למסירה",
+      "image": "https://cdn.vox-cdn.com/thumbor/OlZxOrlg69w0XzwQoGAXc9ENM34=/0x0:2040x1360/1400x933/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/24035737/STK150_PetCats.jpg"
+    },
+    {
+      "id": "39",
+      "name": "צוציק",
+      "type": "ציפור",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למכירה",
+      "price": 120,
+      "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/232199851/1200"
+    },
+    {
+      "id": "40",
+      "name": "ריי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 6,
+      "status": "למסירה",
+      "image": "https://www.hepper.com/wp-content/uploads/2021/11/samoyed-dog_Jirina-Vlkova_Shutterstock.jpg"
     }
-
   ],
   "reviews": [
     {
@@ -250,4 +439,3 @@
     }
   ]
 }
-

@@ -11,7 +11,7 @@ const AddPet = () => {
     age: '',
     status: '',
     imageLink: '',
-    imageFile: '', // base64
+    imageFile: '', 
   });
 
   useEffect(() => {

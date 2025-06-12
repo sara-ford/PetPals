@@ -19,7 +19,6 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [nextReviewId, setNextReviewId] = useState(1);
 
-  // בדיקה אם המשתמש הוא מנהל
   const isAdmin = currentUser?.status === 'admin';
 
   useEffect(() => {
@@ -137,7 +136,7 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   };
 
   const submitReview = async () => {
-    if (!newRating) return; // Only require rating, not comment
+    if (!newRating) return;
 
     const newReview = {
       id: nextReviewId.toString(),
@@ -185,7 +184,6 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   return (
     <div className="home-container">
       <div className="content">
-        <h1>ברוך הבא לדף הבית!</h1>
 
         <div className="filters">
           <div className="filter-group">
