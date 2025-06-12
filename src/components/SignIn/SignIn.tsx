@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { setUser } from '../../redux/userSlice';
+import { clearCart } from '../../redux/cartSlice';
 import { setMessage } from '../../redux/messageSlice';
 import './SignIn.scss';
 
@@ -34,6 +35,7 @@ const SignIn: FC<SignInProps> = () => {
 
         if (userExists) {
           dispatch(setUser(userExists));
+          dispatch(clearCart()); // Clear cart for new user
           dispatch(setMessage({ type: 'success', text: `ברוך הבא, ${userExists.name}!` }));
           setTimeout(() => {
             navigate('/home');

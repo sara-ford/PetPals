@@ -4,18 +4,27 @@
       "name": "שרה כהן",
       "email": "sara@example.com",
       "password": "123456",
-      "id": "1"
+      "id": "1",
+      "status": "customer"
     },
     {
-      "name": "דני לוh",
+      "name": "דני לו",
       "email": "dani@example.com",
       "password": "123456",
-      "id": "2"
+      "id": "2",
+      "status": "admin"
     },
     {
       "id": "3",
       "name": "sa",
       "email": "sa@example.com",
+      "password": "123456",
+      "status": "customer"
+    },
+    {
+      "id": "4",
+      "name": "JJ",
+      "email": "hadasda8@gmail.com",
       "password": "123456",
       "status": "customer"
     }
@@ -207,6 +216,16 @@
       "age": 5,
       "status": "למסירה",
       "image": "http://www.houstonpettalk.com/wp-content/uploads/2009/11/puppies_1.jpg"
+    },
+    {
+      "id": "f3e1",
+      "name": "דרדס",
+      "type": "בן אדם",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למכירה",
+      "image": "https://d3m9l0v76dty0.cloudfront.net/system/photos/2557784/show/1fd8ae9e8efa0b89f057f317f7d64053.jpg",
+      "price": 1
     }
   ],
   "reviews": [
@@ -257,6 +276,14 @@
     {
       "id": "2",
       "petId": "3",
+      "userId": "1",
+      "username": "שרה כהן",
+      "rating": 3,
+      "comment": ""
+    },
+    {
+      "id": "f6c4",
+      "petId": "2",
       "userId": "1",
       "username": "שרה כהן",
       "rating": 3,
