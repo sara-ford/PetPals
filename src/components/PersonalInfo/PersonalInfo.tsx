@@ -102,7 +102,7 @@ const PersonalInfo = ({ onClose }: { onClose: () => void }) => {
             {errors.email && <div className="error">{errors.email}</div>}
 
             <label>סיסמה:</label>
-            <input name="password" type="password" value={formData.password} onChange={handleChange} />
+            <input name="password" type="text" value={formData.password} onChange={handleChange} />
             {errors.password && <div className="error">{errors.password}</div>}
 
             <div className="button-row">
