@@ -1,1 +1,201 @@
-.PersonalInfo {}
+.personal-modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  z-index: 999;
+}
+
+.personal-modal-content {
+  width: 350px;
+  background: white;
+  padding: 30px;
+  overflow-y: auto;
+  direction: rtl;
+}
+
+.personal-view {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: right;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .edit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #388e3c;
+    align-self: flex-start;
+    padding: 5px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #2e7d32;
+    }
+  }
+}
+
+.PersonalInfoForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 350px;
+  margin: auto;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: -10px;
+  }
+
+  .button-row {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.2s;
+    }
+
+    .save-button {
+      background-color: #388e3c;
+      color: white;
+
+      &:hover {
+        background-color: #2e7d32;
+      }
+    }
+
+    .cancel-button {
+      background-color: #ccc;
+      color: #333;
+
+      &:hover {
+        background-color: #b3b3b3;
+      }
+    }
+  }
+}
+.edit-button-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #388e3c;
+  font-size: 1.2rem;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px; // מתאים ל-RTL תזיז בהתאם אם צריך
+  transition: color 0.2s;
+
+  &:hover {
+    color: #2e7d32;
+  }
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+
+  .save-button {
+    flex: 1;
+    background-color: #388e3c;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #2e7d32;
+    }
+  }
+
+  .cancel-button {
+    flex: 1;
+    background-color: #ccc;
+    color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #b3b3b3;
+    }
+  }
+}
+.personal-modal-content {
+  position: relative; /* בשביל ה absolute */
+  width: 350px;
+  background: white;
+  padding: 30px;
+  overflow-y: auto;
+  direction: rtl;
+}
+
+.edit-button-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #388e3c;
+  font-size: 1.2rem;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px; /* מתאים ל-RTL, תוכל לשנות ל-right: 10px אם צריך */
+  transition: color 0.2s;
+}
+
+.edit-button-icon:hover {
+  color: #2e7d32;
+}
+

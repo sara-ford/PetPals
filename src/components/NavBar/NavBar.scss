@@ -31,3 +31,55 @@
 .navbar-links a:hover {
   color: #ff8800;
 }
+.navbar {
+  background: #333;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin: 0 15px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar-links a:hover {
+  color: #ddd;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  color: #ddd;
+}
+
+.cart-count {
+  background: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 12px;
+  margin-left: 5px;
+}
