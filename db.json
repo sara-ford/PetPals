@@ -217,198 +217,197 @@
       "status": "למסירה",
       "image": "http://www.houstonpettalk.com/wp-content/uploads/2009/11/puppies_1.jpg"
     },
-  {
-    "id": "21",
-    "name": "בובי",
-    "type": "כלב",
-    "gender": "זכר",
-    "age": 2,
-    "status": "למכירה",
-    "price": 1000,
-    "image": "https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074_1280.jpg"
-  },
-  {
-    "id": "22",
-    "name": "לוצי",
-    "type": "חתול",
-    "gender": "נקבה",
-    "age": 1,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2018/07/08/14/16/cat-3523998_1280.jpg"
-  },
-  {
-    "id": "23",
-    "name": "טיטו",
-    "type": "תוכי",
-    "gender": "זכר",
-    "age": 3,
-    "status": "למכירה",
-    "price": 300,
-    "image": "https://cdn.pixabay.com/photo/2018/05/17/17/08/parrot-3408918_1280.jpg"
-  },
-  {
-    "id": "24",
-    "name": "שוקו",
-    "type": "אוגר",
-    "gender": "זכר",
-    "age": 1,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/32/hamster-1868466_1280.jpg"
-  },
-  {
-    "id": "25",
-    "name": "ביסלי",
-    "type": "כלב",
-    "gender": "נקבה",
-    "age": 4,
-    "status": "למכירה",
-    "price": 950,
-    "image": "https://cdn.pixabay.com/photo/2016/12/13/00/13/dog-1900563_1280.jpg"
-  },
-  {
-    "id": "26",
-    "name": "נוגט",
-    "type": "חתול",
-    "gender": "נקבה",
-    "age": 2,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2017/11/09/21/41/cat-2934720_1280.jpg"
-  },
-  {
-    "id": "27",
-    "name": "ריקי",
-    "type": "כלב",
-    "gender": "זכר",
-    "age": 1,
-    "status": "למכירה",
-    "price": 1100,
-    "image": "https://cdn.pixabay.com/photo/2018/03/31/06/31/dog-3277416_1280.jpg"
-  },
-  {
-    "id": "28",
-    "name": "קווין",
-    "type": "תוכי",
-    "gender": "נקבה",
-    "age": 2,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2017/08/07/18/57/parrot-2605635_1280.jpg"
-  },
-  {
-    "id": "29",
-    "name": "לוקי",
-    "type": "חתול",
-    "gender": "זכר",
-    "age": 3,
-    "status": "למכירה",
-    "price": 780,
-    "image": "https://cdn.pixabay.com/photo/2016/03/28/10/05/kitten-1285341_1280.jpg"
-  },
-  {
-    "id": "30",
-    "name": "סנדי",
-    "type": "כלב",
-    "gender": "נקבה",
-    "age": 5,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2015/11/17/13/13/puppy-1047521_1280.jpg"
-  },
-  {
-    "id": "31",
-    "name": "דובי",
-    "type": "ארנב",
-    "gender": "זכר",
-    "age": 2,
-    "status": "למכירה",
-    "price": 150,
-    "image": "https://cdn.pixabay.com/photo/2018/05/14/20/46/rabbit-3400968_1280.jpg"
-  },
-  {
-    "id": "32",
-    "name": "סימבה",
-    "type": "חתול",
-    "gender": "זכר",
-    "age": 1,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"
-  },
-  {
-    "id": "33",
-    "name": "בל",
-    "type": "תוכי",
-    "gender": "נקבה",
-    "age": 3,
-    "status": "למכירה",
-    "price": 400,
-    "image": "https://cdn.pixabay.com/photo/2018/09/22/17/25/parrot-3696048_1280.jpg"
-  },
-  {
-    "id": "34",
-    "name": "טופי",
-    "type": "כלב",
-    "gender": "זכר",
-    "age": 2,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2016/02/19/15/46/dog-1210559_1280.jpg"
-  },
-  {
-    "id": "35",
-    "name": "חמודי",
-    "type": "אוגר",
-    "gender": "זכר",
-    "age": 1,
-    "status": "למכירה",
-    "price": 45,
-    "image": "https://cdn.pixabay.com/photo/2017/04/07/10/13/hamster-2210002_1280.jpg"
-  },
-  {
-    "id": "36",
-    "name": "רוזי",
-    "type": "חתול",
-    "gender": "נקבה",
-    "age": 4,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg"
-  },
-  {
-    "id": "37",
-    "name": "במבי",
-    "type": "כלב",
-    "gender": "נקבה",
-    "age": 3,
-    "status": "למכירה",
-    "price": 980,
-    "image": "https://cdn.pixabay.com/photo/2016/01/02/16/53/dog-1118240_1280.jpg"
-  },
-  {
-    "id": "38",
-    "name": "סופי",
-    "type": "חתול",
-    "gender": "נקבה",
-    "age": 2,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2018/10/01/09/21/cat-3715738_1280.jpg"
-  },
-  {
-    "id": "39",
-    "name": "צוציק",
-    "type": "ציפור",
-    "gender": "זכר",
-    "age": 1,
-    "status": "למכירה",
-    "price": 120,
-    "image": "https://cdn.pixabay.com/photo/2017/03/13/17/26/bird-2140367_1280.jpg"
-  },
-  {
-    "id": "40",
-    "name": "ריי",
-    "type": "כלב",
-    "gender": "זכר",
-    "age": 6,
-    "status": "למסירה",
-    "image": "https://cdn.pixabay.com/photo/2016/05/09/10/42/dog-1380786_1280.jpg"
-  }
-]
-  ,
+    {
+      "id": "21",
+      "name": "בובי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 2,
+      "status": "למכירה",
+      "price": 1000,
+      "image": "https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074_1280.jpg"
+    },
+    {
+      "id": "22",
+      "name": "לוצי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 1,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2018/07/08/14/16/cat-3523998_1280.jpg"
+    },
+    {
+      "id": "23",
+      "name": "טיטו",
+      "type": "תוכי",
+      "gender": "זכר",
+      "age": 3,
+      "status": "למכירה",
+      "price": 300,
+      "image": "https://cdn.pixabay.com/photo/2018/05/17/17/08/parrot-3408918_1280.jpg"
+    },
+    {
+      "id": "24",
+      "name": "שוקו",
+      "type": "אוגר",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2016/11/29/09/32/hamster-1868466_1280.jpg"
+    },
+    {
+      "id": "25",
+      "name": "ביסלי",
+      "type": "כלב",
+      "gender": "נקבה",
+      "age": 4,
+      "status": "למכירה",
+      "price": 950,
+      "image": "https://cdn.pixabay.com/photo/2016/12/13/00/13/dog-1900563_1280.jpg"
+    },
+    {
+      "id": "26",
+      "name": "נוגט",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2017/11/09/21/41/cat-2934720_1280.jpg"
+    },
+    {
+      "id": "27",
+      "name": "ריקי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למכירה",
+      "price": 1100,
+      "image": "https://cdn.pixabay.com/photo/2018/03/31/06/31/dog-3277416_1280.jpg"
+    },
+    {
+      "id": "28",
+      "name": "קווין",
+      "type": "תוכי",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2017/08/07/18/57/parrot-2605635_1280.jpg"
+    },
+    {
+      "id": "29",
+      "name": "לוקי",
+      "type": "חתול",
+      "gender": "זכר",
+      "age": 3,
+      "status": "למכירה",
+      "price": 780,
+      "image": "https://cdn.pixabay.com/photo/2016/03/28/10/05/kitten-1285341_1280.jpg"
+    },
+    {
+      "id": "30",
+      "name": "סנדי",
+      "type": "כלב",
+      "gender": "נקבה",
+      "age": 5,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2015/11/17/13/13/puppy-1047521_1280.jpg"
+    },
+    {
+      "id": "31",
+      "name": "דובי",
+      "type": "ארנב",
+      "gender": "זכר",
+      "age": 2,
+      "status": "למכירה",
+      "price": 150,
+      "image": "https://cdn.pixabay.com/photo/2018/05/14/20/46/rabbit-3400968_1280.jpg"
+    },
+    {
+      "id": "32",
+      "name": "סימבה",
+      "type": "חתול",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"
+    },
+    {
+      "id": "33",
+      "name": "בל",
+      "type": "תוכי",
+      "gender": "נקבה",
+      "age": 3,
+      "status": "למכירה",
+      "price": 400,
+      "image": "https://cdn.pixabay.com/photo/2018/09/22/17/25/parrot-3696048_1280.jpg"
+    },
+    {
+      "id": "34",
+      "name": "טופי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 2,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2016/02/19/15/46/dog-1210559_1280.jpg"
+    },
+    {
+      "id": "35",
+      "name": "חמודי",
+      "type": "אוגר",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למכירה",
+      "price": 45,
+      "image": "https://cdn.pixabay.com/photo/2017/04/07/10/13/hamster-2210002_1280.jpg"
+    },
+    {
+      "id": "36",
+      "name": "רוזי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 4,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg"
+    },
+    {
+      "id": "37",
+      "name": "במבי",
+      "type": "כלב",
+      "gender": "נקבה",
+      "age": 3,
+      "status": "למכירה",
+      "price": 980,
+      "image": "https://cdn.pixabay.com/photo/2016/01/02/16/53/dog-1118240_1280.jpg"
+    },
+    {
+      "id": "38",
+      "name": "סופי",
+      "type": "חתול",
+      "gender": "נקבה",
+      "age": 2,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2018/10/01/09/21/cat-3715738_1280.jpg"
+    },
+    {
+      "id": "39",
+      "name": "צוציק",
+      "type": "ציפור",
+      "gender": "זכר",
+      "age": 1,
+      "status": "למכירה",
+      "price": 120,
+      "image": "https://cdn.pixabay.com/photo/2017/03/13/17/26/bird-2140367_1280.jpg"
+    },
+    {
+      "id": "40",
+      "name": "ריי",
+      "type": "כלב",
+      "gender": "זכר",
+      "age": 6,
+      "status": "למסירה",
+      "image": "https://cdn.pixabay.com/photo/2016/05/09/10/42/dog-1380786_1280.jpg"
+    }
+  ],
   "reviews": [
     {
       "id": "1",
@@ -465,6 +464,14 @@
     {
       "id": "f6c4",
       "petId": "2",
+      "userId": "1",
+      "username": "שרה כהן",
+      "rating": 3,
+      "comment": ""
+    },
+    {
+      "id": "37ba",
+      "petId": "5",
       "userId": "1",
       "username": "שרה כהן",
       "rating": 3,

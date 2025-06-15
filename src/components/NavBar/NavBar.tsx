@@ -49,10 +49,14 @@ const NavBar: FC<NavBarProps> = ({ onShowPersonalInfo }) => {
         ) : (
           <li><Link to="/">התחברות</Link></li>
         )}
-        <li><Link to="/home">החיות שלנו</Link></li>
+        <li>
+          <a href="/home#pets" className="link-button">
+            החיות שלנו
+          </a>
+        </li>
         <li>
           <Link to="/favorites">
-           חביבים{cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
+           מועדפים{cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
           </Link>
         </li>
         <li>
