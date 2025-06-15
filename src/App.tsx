@@ -9,7 +9,6 @@ import Home from './components/Home/Home';
 import PersonalInfo from './components/PersonalInfo/PersonalInfo';
 import Favorites from './components/Favorits/Favorits';
 import NavBar from './components/NavBar/NavBar';
-import MessageBar from './components/MessageBar/MessageBar';
 
 import './App.css';
 const AddPet = lazy(() => import('./components/AddPet/AddPet'));
@@ -20,7 +19,7 @@ const AppContent: React.FC = () => {
   const [showPersonalInfo, setShowPersonalInfo] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch<AppDispatch>();
-  const message = useSelector((state: RootState) => state.message.message);
+const message = useSelector((state: RootState) => state.message);
 
   const isLoginPage = location.pathname === '/';
 
@@ -63,7 +62,6 @@ const AppContent: React.FC = () => {
       )}
 
       <Routes>
-        <MessageBar/>
         <Route path="/" element={<AuthContainer />} />
         <Route path="/home" element={<Home onShowPersonalInfo={() => setShowPersonalInfo(true)} />} />
         <Route path="/personal-info" element={<PersonalInfo onClose={() => setShowPersonalInfo(false)} />} />
