@@ -6,14 +6,14 @@ interface FetchState {
   error: string | null;
 }
 
-const useFetchPets = (statusFilter: string, typeFilter: string) => {
+const useFetchUsers = (roleFilter: string, statusFilter: string) => {
   const [state, setState] = useState<FetchState>({ loading: true, data: [], error: null });
 
   useEffect(() => {
-    let url = 'http://localhost:3001/pets';
+    let url = 'http://localhost:3001/users';
     const params = [];
+    if (roleFilter) params.push(`role=${encodeURIComponent(roleFilter)}`);
     if (statusFilter) params.push(`status=${encodeURIComponent(statusFilter)}`);
-    if (typeFilter) params.push(`type=${encodeURIComponent(typeFilter)}`);
     if (params.length) url += `?${params.join('&')}`;
 
     setState({ loading: true, data: [], error: null });
@@ -25,9 +25,9 @@ const useFetchPets = (statusFilter: string, typeFilter: string) => {
       })
       .then(data => setState({ loading: false, data, error: null }))
       .catch(error => setState({ loading: false, data: [], error: error.message }));
-  }, [statusFilter, typeFilter]);
+  }, [roleFilter, statusFilter]);
 
   return { ...state };
 };
 
-export default useFetchPets;
+export default useFetchUsers;

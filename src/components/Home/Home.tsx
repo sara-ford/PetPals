@@ -3,21 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../../redux/cartSlice';
 import { setMessage } from '../../redux/messageSlice';
 import { RootState } from '../../redux/store';
-import './Home.scss';
+import useFetchUsers from '../../Hooks/userRequestHook'; 
 
 // Placeholder PetCard component (replace with actual implementation)
-const PetCard = ({ pet }: { pet: any }) => (
-  <div className="pet-card">
-    <img src={pet.image} alt={pet.name} className="pet-image" />
-    <div className="pet-info">
-      <h2>{pet.name}</h2>
-      <p>סוג: {pet.type}</p>
-      <p>מין: {pet.gender}</p>
-      <p>גיל: {pet.age}</p>
-      <p>סטטוס: {pet.status}</p>
-    </div>
-  </div>
-);
+// const PetCard = ({ pet }: { pet: any }) => (
+//   <div className="pet-card">
+//     <img src={pet.image} alt={pet.name} className="pet-image" />
+//     <div className="pet-info">
+//       <h2>{pet.name}</h2>
+//       <p>סוג: {pet.type}</p>
+//       <p>מין: {pet.gender}</p>
+//       <p>גיל: {pet.age}</p>
+//       <p>סטטוס: {pet.status}</p>
+//       <p>מחיר: {pet.price}</p>
+
+//     </div>
+//   </div>
+// );
 
 const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const [pets, setPets] = useState<any[]>([]);
@@ -35,26 +37,17 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
-  const petsPerPage = 20;
+  const petsPerPage = 21;
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastPet = currentPage * petsPerPage;
   const indexOfFirstPet = indexOfLastPet - petsPerPage;
   const currentPets = pets.slice(indexOfFirstPet, indexOfLastPet);
   const totalPages = Math.ceil(pets.length / petsPerPage);
 
-  useEffect(() => {
-    fetch('http://localhost:3001/users')
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to fetch users');
-        return response.json();
-      })
-      .then((data) => setUsers(data))
-      .catch((error) => {
-        console.error('Error fetching users:', error);
-        dispatch(setMessage({ type: 'error', text: 'שגיאה בטעינת משתמשים' }));
-      });
-  }, [dispatch]);
-
+// const updatedReviews = reviews.map((review: any) => ({
+//   ...review,
+//   username: users.find((user: any) => user.id === review.userId)?.name || 'משתמש אנונימי',
+// }));
   useEffect(() => {
     let url = 'http://localhost:3001/pets';
     const params = [];
@@ -100,7 +93,7 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
       dispatch(setMessage({ type: 'success', text: `החיה ${pet.name} הוסרה מהסל!` }));
     } else {
       dispatch(addToCart(cartItem));
-      dispatch(setMessage({ type: 'success', text: `החיה ${pet.name} נוספה לסל!` }));
+      dispatch(setMessage({ type: 'success', text: `הופ! ${pet.name} ! בחביבים!` }));
     }
   };
 
@@ -110,13 +103,13 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
         if (!response.ok) throw new Error('Failed to fetch reviews');
         return response.json();
       })
-      .then((reviews) => {
+     .then((reviews) => {
         const updatedReviews = reviews.map((review: any) => ({
           ...review,
           username: users.find((user: any) => user.id === review.userId)?.name || 'משתמש אנונימי',
         }));
         setSelectedPet({ ...pet, reviews: updatedReviews });
-      })
+      }) 
       .catch((error) => {
         console.error('Error fetching reviews:', error);
         setSelectedPet({ ...pet, reviews: [] });
@@ -307,6 +300,8 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
                 <p>מין: {pet.gender}</p>
                 <p>גיל: {pet.age}</p>
                 <p>סטטוס: {pet.status}</p>
+                <p>מחיר: {pet.price}</p>
+
                 <div className="pet-actions">
                   <button
                     onClick={(e) => {
@@ -381,6 +376,8 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
               <p>מין: {selectedPet.gender}</p>
               <p>גיל: {selectedPet.age}</p>
               <p>סטטוס: {selectedPet.status}</p>
+              <p>מחיר: {selectedPet.price}</p>
+
               <button onClick={() => toggleCart(selectedPet)} className="favorite-button">
                 {cartItems?.find((item: any) => item.id === selectedPet.id) ? (
                   <svg className="icon filled" viewBox="0 0 24 24">
@@ -399,7 +396,7 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
                     <p className="review-username">נכתב על ידי: {review.username}</p>
                     <div className="review-rating">
                       <span>דירוג: </span>
-                      {renderStars(review.rating, () => {})}
+                      {renderStars(review.rating, () => { })}
                     </div>
                     {editReviewId === review.id ? (
                       <>
