@@ -42,24 +42,29 @@ const message = useSelector((state: RootState) => state.message);
         <PersonalInfo onClose={() => setShowPersonalInfo(false)} />
       )}
 
-      {message && (
-        <div className="toast-container">
-          <Toast
-            show={!!message}
-            onClose={() => dispatch(clearMessage())}
-            delay={3000}
-            autohide
-            className={message.type === 'success' ? 'toast-success' : 'toast-error'}
-          >
-            <Toast.Header>
-              <strong className="me-auto">
-                {message.type === 'success' ? 'הצלחה' : 'שגיאה'}
-              </strong>
-            </Toast.Header>
-            <Toast.Body>{message.text}</Toast.Body>
-          </Toast>
-        </div>
-      )}
+{message.text && (
+  <div className="toast-container">
+    <Toast
+      show={!!message.text}
+      onClose={() => dispatch(clearMessage())}
+      delay={3000}
+      autohide
+      className={message.type === 'success' ? 'toast-success' : 'toast-error'}
+    >
+      <Toast.Header>
+        <strong className="me-auto">
+          {message.type === 'success'
+            ? 'הצלחה'
+            : message.type === 'error'
+            ? 'שגיאה'
+            : ''}
+        </strong>
+      </Toast.Header>
+      <Toast.Body>{message.text}</Toast.Body>
+    </Toast>
+  </div>
+)}
+
 
       <Routes>
         <Route path="/" element={<AuthContainer />} />
