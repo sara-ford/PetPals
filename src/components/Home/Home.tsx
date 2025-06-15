@@ -6,12 +6,10 @@ import { setMessage } from '../../redux/messageSlice';
 import { RootState } from '../../redux/store';
 import './Home.scss';
 
-// ✅ הוספת טיפוס לפרופס
 interface HomeProps {
   onShowPersonalInfo: () => void;
 }
 
-// ✅ הגדרת הקומפוננטה עם הפרופס
 const Home: React.FC<HomeProps> = ({ onShowPersonalInfo }) => {
   const [pets, setPets] = useState<any[]>([]);
   const [selectedPet, setSelectedPet] = useState<any>(null);
