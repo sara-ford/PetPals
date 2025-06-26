@@ -1,11 +1,17 @@
 .navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9000;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa;
-  padding: 12px 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
 }
+
 
 .navbar-logo {
   font-size: 1.5rem;

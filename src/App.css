@@ -1,22 +1,40 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f3f3f3;
-  margin: 0;
-  padding: 0;
-}
+/* Fixed toast-container at top-right, ensuring visibility when scrolling */
 .toast-container {
-  position: fixed;
+  position: fixed !important; /* Enforce fixed positioning */
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 9999; /* High z-index to stay above all content */
+  max-width: 300px; /* Compact width */
+  pointer-events: auto; /* Ensure interactivity */
 }
 
+/* Styling for success toast */
 .toast-success {
   background-color: #d4edda;
   color: #155724;
+  opacity: 0.95; /* Slightly transparent for better UX */
 }
 
+/* Styling for error toast */
 .toast-error {
   background-color: #f8d7da;
   color: #721c24;
+  opacity: 0.95; /* Slightly transparent for better UX */
+}
+
+/* Compact toast styling */
+.toast {
+  font-size: 0.9rem;
+  min-width: 200px;
+  border-radius: 8px; /* Rounded corners for better appearance */
+}
+
+/* Close button styling */
+.btn-close {
+  filter: invert(0.6); /* Improve visibility on light/dark backgrounds */
+}
+
+/* Ensure no parent elements interfere */
+body, html {
+  overflow: visible !important; /* Prevent overflow clipping */
 }
