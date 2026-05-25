@@ -50,9 +50,9 @@ const NavBar: FC<NavBarProps> = ({ onShowPersonalInfo }) => {
           <li><Link to="/">התחברות</Link></li>
         )}
         <li>
-          <a href="/home#pets" className="link-button">
+          <Link to="/home#pets" className="link-button">
             החיות שלנו
-          </a>
+          </Link>
         </li>
         <li>
           <Link to="/favorites">

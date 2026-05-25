@@ -21,6 +21,14 @@ const PetCard = ({ pet }: { pet: any }) => (
 
 const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
   const [pets, setPets] = useState<any[]>([]);
+  useEffect(() => {
+    if (window.location.hash == '#pets') {
+      const petsSection = document.getElementById('pets');
+      if (petsSection) {
+        petsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
   const [selectedPet, setSelectedPet] = useState<any>(null);
   const [statusFilter, setStatusFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
@@ -501,5 +509,6 @@ const Home = ({ onShowPersonalInfo }: { onShowPersonalInfo: () => void }) => {
     </div>
   );
 };
+
 
 export default Home;

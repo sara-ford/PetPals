@@ -34,7 +34,7 @@ const Favorites: FC = () => {
                   onClick={() => handleRemove(item.id, item.name)}
                   className="remove-button"
                 >
-                  הסר מהסל
+                  פחות מעודף
                 </button>
               </div>
             </div>

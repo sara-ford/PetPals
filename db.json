@@ -27,6 +27,20 @@
       "email": "hadasda8@gmail.com",
       "password": "123456",
       "status": "customer"
+    },
+    {
+      "id": "5",
+      "name": "יהודה ",
+      "email": "yeuda@gamil.com",
+      "password": "123456",
+      "status": "customer"
+    },
+    {
+      "id": 6,
+      "name": "ךתךת",
+      "email": "L@D",
+      "password": "SDSDDD",
+      "status": "customer"
     }
   ],
   "pets": [

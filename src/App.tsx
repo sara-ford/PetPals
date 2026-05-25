@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Toast } from 'react-bootstrap';
 import { RootState, AppDispatch } from './redux/store';
 import { clearMessage } from './redux/messageSlice';
 import AuthContainer from './components/AuthContainer/AuthContainer';
-import Home from './components/Home/Home';
-import PersonalInfo from './components/PersonalInfo/PersonalInfo';
-import Favorites from './components/Favorits/Favorits';
 import NavBar from './components/NavBar/NavBar';
-import AddPet from './components/AddPet/AddPet';
 import './App.css';
+const Home = lazy(() => import('./components/Home/Home'));
+const PersonalInfo = lazy(() => import('./components/PersonalInfo/PersonalInfo'));
+const Favorites = lazy(() => import('./components/Favorits/Favorits'));
+const AddPet = lazy(() => import('./components/AddPet/AddPet'));
+
 
 const AppContent: React.FC = () => {
   const [showPersonalInfo, setShowPersonalInfo] = useState(false);
@@ -30,7 +32,7 @@ const AppContent: React.FC = () => {
   }, [message, dispatch]);
 
   return (
-    <>
+    <Suspense fallback={<div>טוען...</div>}>
       {!isLoginPage && (
         <NavBar onShowPersonalInfo={() => setShowPersonalInfo(true)} />
       )}
@@ -65,7 +67,7 @@ const AppContent: React.FC = () => {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/add-pet" element={<AddPet />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };
 
