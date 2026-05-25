@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,12 +18,12 @@ const AppContent: React.FC = () => {
   const [showPersonalInfo, setShowPersonalInfo] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch<AppDispatch>();
-  const message = useSelector((state: RootState) => state.message.message);
+  const message = useSelector((state: RootState) => state.message);
 
   const isLoginPage = location.pathname === '/';
 
   useEffect(() => {
-    if (message) {
+    if (message.text) {
       const timer = setTimeout(() => {
         dispatch(clearMessage());
       }, 3000);
@@ -41,27 +41,39 @@ const AppContent: React.FC = () => {
         <PersonalInfo onClose={() => setShowPersonalInfo(false)} />
       )}
 
-      {message && (
+      {message.text && (
         <div className="toast-container">
           <Toast
-            show={!!message}
+            show={!!message.text}
             onClose={() => dispatch(clearMessage())}
             delay={3000}
             autohide
             className={message.type === 'success' ? 'toast-success' : 'toast-error'}
           >
-            <Toast.Header>
+            <Toast.Header closeButton={false}> {/* Disable default close button */}
               <strong className="me-auto">
-                {message.type === 'success' ? 'הצלחה' : 'שגיאה'}
+                {message.type === 'success'
+                  ? 'הצלחה'
+                  : message.type === 'error'
+                  ? 'שגיאה'
+                  : ''}
               </strong>
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => dispatch(clearMessage())}
+                aria-label="סגור"
+              />
             </Toast.Header>
             <Toast.Body>{message.text}</Toast.Body>
           </Toast>
         </div>
       )}
 
+
       <Routes>
         <Route path="/" element={<AuthContainer />} />
+        <Route path="/pets/:id" element={<PetDetails />} />
         <Route path="/home" element={<Home onShowPersonalInfo={() => setShowPersonalInfo(true)} />} />
         <Route path="/personal-info" element={<PersonalInfo onClose={() => setShowPersonalInfo(false)} />} />
         <Route path="/favorites" element={<Favorites />} />

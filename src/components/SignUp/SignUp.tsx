@@ -19,7 +19,13 @@ const SignUp: FC<SignUpProps> = ({ setIsRegistering }) => {
     validationSchema: Yup.object({
       name: Yup.string().required('שדה חובה'),
       email: Yup.string().email('אימייל לא תקין').required('שדה חובה'),
-      password: Yup.string().min(6, 'לפחות 6 תווים').required('שדה חובה'),
+      password: Yup.string()
+        .required('שדה חובה')
+        .min(8, 'לפחות 8 תווים')
+        .matches(/[a-z]/, 'חייב לכלול אות קטנה')
+        .matches(/[A-Z]/, 'חייב לכלול אות גדולה')
+        .matches(/\d/, 'חייב לכלול מספר')
+        .matches(/[!@#$%^&*(),.?":{}|<>]/, 'חייב לכלול תו מיוחד'),
     }),
     onSubmit: async (values) => {
       try {
