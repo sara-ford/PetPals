@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -73,7 +73,9 @@ const AppContent: React.FC = () => {
 
       <Routes>
         <Route path="/" element={<AuthContainer />} />
+        {/*
         <Route path="/pets/:id" element={<PetDetails />} />
+        */}
         <Route path="/home" element={<Home onShowPersonalInfo={() => setShowPersonalInfo(true)} />} />
         <Route path="/personal-info" element={<PersonalInfo onClose={() => setShowPersonalInfo(false)} />} />
         <Route path="/favorites" element={<Favorites />} />
